@@ -78,28 +78,23 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account
   users.users.jayden = {
     isNormalUser = true;
     description = "Jayden";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      kate
-    #  thunderbird
-    ];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # List packages installed in system profile
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    home-manager
+    cowsay
     google-chrome
-  #  wget
+    hello
+    home-manager
+    vim
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -129,5 +124,10 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
   
+  # Enable flakes 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
+  # framework hardware stuff
+  services.fwupd.enable = true;
 }
+

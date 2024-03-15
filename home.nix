@@ -68,6 +68,8 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # git config
   programs.git = {
     enable = true;
     userName = "JaydenPahukula";
