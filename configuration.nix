@@ -88,6 +88,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Make apps not blurry
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     cowsay
