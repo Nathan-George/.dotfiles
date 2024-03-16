@@ -14,20 +14,23 @@
   outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }:
     let
       system = "x86_64-linux";
-      lib = nixpkgs.lib;
-      pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
-        nixos = lib.nixosSystem {
+        nixos = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./configuration.nix nixos-hardware.nixosModules.framework-11th-gen-intel ];
+          modules = [
+            ./configuration.nix
+            nixos-hardware.nixosModules.framework-11th-gen-intel
+          ];
         };
       };
-      homeConfigurations.jayden = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home.nix ];
+      homeConfigurations = {
+        jayden = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [ ./home.nix ];
+        };
       };
     };
   
 }
-
+ 
