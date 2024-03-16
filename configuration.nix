@@ -98,6 +98,7 @@
     google-chrome
     hello
     home-manager
+    neofetch
     vim
   ];
 
