@@ -23,6 +23,7 @@
   home.packages =  [
     pkgs.discord
     pkgs.spotify
+    pkgs.yakuake
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -77,4 +78,7 @@
     userName = "JaydenPahukula";
     userEmail = "jayden.pahukula@gmail.com";
   };
+
+  # yakuake config
+  home.file.".config/yakuakerc".source = ./yakuakerc;
 }
