@@ -93,10 +93,8 @@
 
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
-    cowsay
     file
     google-chrome
-    hello
     home-manager
     neofetch
     python3
