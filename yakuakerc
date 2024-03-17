@@ -1,3 +1,6 @@
+# Look here for settings:
+# https://github.com/KDE/yakuake/blob/master/app/config/yakuake.kcfg
+
 [Animation]
 Frames=10
 
