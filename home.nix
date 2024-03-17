@@ -20,10 +20,11 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages =  [
-    pkgs.discord
-    pkgs.spotify
-    pkgs.yakuake
+  home.packages = with pkgs; [
+    discord
+    spotify
+    vscode
+    yakuake
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
