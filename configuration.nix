@@ -99,6 +99,8 @@
     hello
     home-manager
     neofetch
+    python3
+    pypy3
     vim
   ];
 
@@ -134,5 +136,10 @@
   
   # framework hardware stuff
   services.fwupd.enable = true;
+
+  # bash aliases
+  programs.bash.shellAliases = {
+    pypy = "pypy3";
+  };
 }
 
