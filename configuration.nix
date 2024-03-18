@@ -98,7 +98,6 @@
     git
     gnumake
     google-chrome
-    home-manager
     neofetch
     python3
     pypy3
