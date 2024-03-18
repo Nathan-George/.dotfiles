@@ -14,6 +14,7 @@
   outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }:
     let
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
@@ -26,7 +27,7 @@
       };
       homeConfigurations = {
         jayden = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+          inherit pkgs;
           modules = [ ./home.nix ];
         };
       };

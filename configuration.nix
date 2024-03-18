@@ -95,6 +95,7 @@
   environment.systemPackages = with pkgs; [
     file
     gcc
+    git
     gnumake
     google-chrome
     home-manager
