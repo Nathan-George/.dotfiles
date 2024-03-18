@@ -94,15 +94,13 @@
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     file
-    gcc
-    git
-    gnumake
     google-chrome
     neofetch
-    python3
-    pypy3
     vim
   ];
+  
+  # git
+  programs.git.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
