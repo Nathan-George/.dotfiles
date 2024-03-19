@@ -96,6 +96,8 @@
     file
     google-chrome
     neofetch
+    python3
+    pypy3
     vim
   ];
   
