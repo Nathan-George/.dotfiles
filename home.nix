@@ -24,7 +24,6 @@
     discord
     spotify
     vscode
-    yakuake
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -80,6 +79,6 @@
     userEmail = "jayden.pahukula@gmail.com";
   };
 
-  # yakuake config
-  home.file.".config/yakuakerc".source = ./yakuakerc;
+  # TODO: add hyprland config
+
 }

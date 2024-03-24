@@ -9,15 +9,18 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # hardware specific configuration
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # hyprland
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
           inherit system;
           modules = [
             ./configuration.nix
