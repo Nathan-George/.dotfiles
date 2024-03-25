@@ -125,19 +125,18 @@
     hyprpaper
     kitty
     rofi-wayland
-    waybar
-    # (waybar.overrideAttrs (oldAttrs: {
-    #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    # }))
-
     dunst # notification daemon
     libnotify # (dunst depends on this)
     brightnessctl
+    networkmanagerapplet
     # clipboard stuff
     cliphist
     wl-clipboard
     wl-clip-persist
   ];
+
+  # more hyprland stuff
+  programs.waybar.enable = true;
 
   fonts.packages = with pkgs; [
     font-awesome # for waybar
