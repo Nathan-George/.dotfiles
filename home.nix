@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
-{
+with pkgs; let
+  RStudio-with-my-packages = rstudioWrapper.override{ packages = with rPackages; [ mosaic ggformula dplyr Lock5Data ]; };
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jayden";
@@ -24,6 +26,10 @@
     discord
     spotify
     vscode
+
+    # school stuff
+    eclipses.eclipse-java
+    RStudio-with-my-packages
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
