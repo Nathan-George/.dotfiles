@@ -23,9 +23,14 @@ in {
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    
+    # apps
     discord
     spotify
     vscode
+    
+    # utils
+    playerctl
 
     # school stuff
     eclipses.eclipse-java
