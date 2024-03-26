@@ -63,6 +63,10 @@ in {
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    # cursor theme
+    ".icons/default".source = "${pkgs.simp1e-cursors}/share/icons/Simp1e-Adw";
+
   };
 
   # Home Manager can also manage your environment variables through
