@@ -96,7 +96,7 @@
   users.users.jayden = {
     isNormalUser = true;
     description = "Jayden";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
   # make apps not blurry
@@ -126,6 +126,9 @@
   
   # enable git
   programs.git.enable = true;
+
+  # enable docker
+  virtualisation.docker.enable = true;
 
   # bash aliases
   programs.bash.shellAliases = {
