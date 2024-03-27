@@ -20,12 +20,18 @@ in {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Allow certain insecure packages
+  nixpkgs.config.permittedInsecurePackages = [ 
+    "electron-25.9.0" # obsidian needs this
+  ];
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
     
     # apps
     discord
+    obsidian
     spotify
     vscode
     
