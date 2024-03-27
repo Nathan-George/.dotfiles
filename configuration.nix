@@ -120,6 +120,7 @@
     pypy3
     python3
     vim
+    zip
 
   ];
   
