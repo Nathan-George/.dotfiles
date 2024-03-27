@@ -135,7 +135,6 @@
     dunst # notification daemon
     libnotify # (dunst depends on this)
     brightnessctl
-    networkmanagerapplet
     # clipboard stuff
     cliphist
     wl-clipboard
