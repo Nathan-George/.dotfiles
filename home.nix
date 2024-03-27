@@ -38,6 +38,13 @@ in {
     # utils
     playerctl
 
+    # screenshot
+    grim
+    slurp
+
+    # icons
+    flat-remix-icon-theme # https://drasite.com/flat-remix
+
     # school stuff
     eclipses.eclipse-java
     RStudio-with-my-packages
