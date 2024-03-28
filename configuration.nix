@@ -128,7 +128,10 @@
   programs.git.enable = true;
 
   # enable docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  }
 
   # bash aliases
   programs.bash.shellAliases = {
