@@ -131,7 +131,7 @@
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
-  }
+  };
 
   # bash aliases
   programs.bash.shellAliases = {
