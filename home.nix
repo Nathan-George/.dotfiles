@@ -10,9 +10,9 @@ in {
     config/hyprland.nix
   ];
 
-  home = {
+  home = rec {
     username = "jayden";
-    homeDirectory = "/home/jayden";
+    homeDirectory = "/home/${username}";
     stateVersion = "23.11"; # do not change
   };
 
