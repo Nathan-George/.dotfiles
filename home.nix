@@ -5,10 +5,20 @@ with pkgs; let
   RStudio-with-my-packages = rstudioWrapper.override{ packages = with rPackages; [ mosaic ggformula dplyr Lock5Data ]; };
 in {
 
+  imports = [
+    modules/paths.nix
+  ];
+
   home = {
     username = "jayden";
     homeDirectory = "/home/jayden";
     stateVersion = "23.11"; # do not change
+  };
+
+  # set paths
+  paths = rec {
+    root = builtins.toString ./.;
+    scripts = "${root}/scripts";
   };
 
   # enable home manager
