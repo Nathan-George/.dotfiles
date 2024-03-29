@@ -6,7 +6,9 @@ with pkgs; let
 in {
 
   imports = [
+    ./assets
     ./scripts
+    ./modules/wallpaper.nix
     ./config/hyprland.nix
   ];
 
@@ -47,7 +49,6 @@ in {
     RStudio-with-my-packages
 
     # hyprland stuff
-    hyprpaper
     kitty
     rofi-wayland
 
@@ -75,6 +76,8 @@ in {
   # enable waybar
   programs.waybar.enable = true;
 
+  # set wallpaper
+  wallpaper = config.assets.wallpaper;
 
   home.file = {
 
