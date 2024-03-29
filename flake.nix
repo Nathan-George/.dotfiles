@@ -10,11 +10,9 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # hyprland
     hyprland.url = "github:hyprwm/Hyprland";
-    # color manager
-    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, nix-colors, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -35,7 +33,6 @@
     # home manager configuration
     homeConfigurations = {
       jayden = home-manager.lib.homeManagerConfiguration {
-        # extraSpecialArgs = { inherit nix-colors; };
         inherit pkgs;
         modules = [ ./home.nix ];
       };
