@@ -8,14 +8,14 @@
     settings = {
 
       # monitors
-      "monitor" = [
+      monitor = [
         "eDP-1, 2256x1504, 0x0, 1.333333"
         "desc:Acer Technologies SB220Q 0x20104E9F, 1920x1080, -1920x0, 1"
         ", preferred, auto, 1"
       ];
 
       # startup
-      "exec-once" = [
+      exec-once = [
 
         # startup apps
         "waybar"
@@ -37,27 +37,27 @@
 
       # settings
       general = {
-        "border_size" = 2;
-        "gaps_in" = 5;
-        "gaps_out" = 5;
+        border_size = 2;
+        gaps_in = 5;
+        gaps_out = 5;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
-        "layout" = "dwindle";
-        "resize_on_border" = true;
-        "allow_tearing" = false; # https://wiki.hyprland.org/Configuring/Tearing/
+        layout = "dwindle";
+        resize_on_border = true;
+        allow_tearing = false; # https://wiki.hyprland.org/Configuring/Tearing/
       };
 
       decoration = {
-        "rounding" = 5;
-        "drop_shadow" = false;
+        rounding = 5;
+        drop_shadow = false;
         blur = {
-          "enabled" = true;
+          enabled = true;
         };
       };
 
       animations = {
-        "enabled" = true;
-        "animation" = [
+        enabled = true;
+        animation = [
           "windowsOut, 1, 7, default, popin 80%"
           "border, 1, 10, default"
           "borderangle, 1, 8, default"
@@ -69,42 +69,42 @@
       input = {
 
         # keyboard
-        "kb_layout" = "us";
-        "kb_variant" = "";
-        "kb_model" = "";
-        "kb_options" = "";
-        "kb_rules" = "";
+        kb_layout = "us";
+        kb_variant = "";
+        kb_model = "";
+        kb_options = "";
+        kb_rules = "";
 
         # mouse
-        "sensitivity" = 0.5;
-        "accel_profile" = "flat";
-        "natural_scroll" = false;
-        "follow_mouse" = 1;
+        sensitivity = 0.5;
+        accel_profile = "flat";
+        natural_scroll = false;
+        follow_mouse = 1;
         touchpad = {
-          "disable_while_typing" = true;
-          "natural_scroll" = true;
-          "scroll_factor" = 0.5;
-          "tap-and-drag" = false;
+          disable_while_typing = true;
+          natural_scroll = true;
+          scroll_factor = 0.5;
+          tap-and-drag = false;
         };
       };
 
       gestures = {
-        "workspace_swipe" = true;
+        workspace_swipe = true;
       };
 
       misc = {
-        "disable_hyprland_logo" = true;
-        "force_default_wallpaper" = -1;
-        "focus_on_activate" = true;
+        disable_hyprland_logo = true;
+        force_default_wallpaper = -1;
+        focus_on_activate = true;
       };
 
       dwindle = {
-        "preserve_split" = true;
-        # "psuedotile" = true; # not sure why this doesn't work
+        preserve_split = true;
+        # psuedotile = true; # not sure why this doesn't work
       };
 
       master = {
-        "new_is_master" = true;
+        new_is_master = true;
       };
 
       # keybinds
