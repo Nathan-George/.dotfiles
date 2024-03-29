@@ -7,6 +7,7 @@ in {
 
   imports = [
     modules/paths.nix
+    config/hyprland.nix
   ];
 
   home = {
