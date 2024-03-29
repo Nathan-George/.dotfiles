@@ -6,20 +6,14 @@ with pkgs; let
 in {
 
   imports = [
-    modules/paths.nix
-    config/hyprland.nix
+    ./scripts
+    ./config/hyprland.nix
   ];
 
   home = rec {
     username = "jayden";
     homeDirectory = "/home/${username}";
     stateVersion = "23.11"; # do not change
-  };
-
-  # set paths
-  paths = rec {
-    root = builtins.toString ./.;
-    scripts = "${root}/scripts";
   };
 
   # enable home manager

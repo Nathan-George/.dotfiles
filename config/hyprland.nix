@@ -154,7 +154,7 @@
 
       bindr = [
         # app launcher
-        "$mainMod, SUPER_L, exec, ${config.paths.scripts}/applauncher.sh"
+        "$mainMod, SUPER_L, exec, ${config.scripts.appLauncher}"
       ];
 
       bindl = [
@@ -164,17 +164,17 @@
         ", XF86AudioNext, exec, playerctl next"
 
         # mute key
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ${config.paths.scripts}/volumenotification.sh"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ${config.scripts.volumeNotification}"
       ];
 
       bindle = [
         # volume keys
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && ${config.paths.scripts}/volumenotification.sh"
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && ${config.paths.scripts}/volumenotification.sh"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && ${config.scripts.volumeNotification}"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && ${config.scripts.volumeNotification}"
       
         # brightness keys
-        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+ && ${config.paths.scripts}/brightnessnotification.sh"
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%- && ${config.paths.scripts}/brightnessnotification.sh"
+        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+ && ${config.scripts.brightnessNotification}"
+        ", XF86MonBrightnessDown, exec, brightnessctl set 5%- && ${config.scripts.brightnessNotification}"
       ];
 
     };
