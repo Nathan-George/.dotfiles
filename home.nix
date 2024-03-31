@@ -88,7 +88,7 @@ in {
 
   # environment variables
   home.sessionVariables = {
-    pypy = "pypy3";
+
   };
 
 }
