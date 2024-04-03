@@ -118,7 +118,7 @@
         "$mainMod, J, togglesplit, "
 
         # screenshot
-        ", Print, exec, grim -g '$(slurp -d)' | wl-copy"
+        ", Print, exec, grim -g \"$(slurp -d)\""
 
         # clipboard history
         "$mainMod, V, exec, cliphist list | rofi -dmenu -p 'clipboard' | cliphist decode | wl-copy"
