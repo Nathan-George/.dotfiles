@@ -10,6 +10,7 @@ in {
     ./scripts
     ./modules/wallpaper.nix
     ./config/hyprland.nix
+    ./config/lf.nix
   ];
 
   home = rec {
