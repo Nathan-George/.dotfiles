@@ -13,11 +13,9 @@ with lib; {
 
   config = {
     # add hyprpaper package
-    home.packages = [
-        pkgs.hyprpaper
-    ];
+    home.packages = [ pkgs.hyprpaper ];
     # create hyprpaper config file
-    home.file.".config/hypr/hyprpaper.conf".text = ''
+    xdg.configFile."hypr/hyprpaper.conf".text = ''
         preload = ${config.wallpaper}
         wallpaper = ,${config.wallpaper}
         ipc = off
