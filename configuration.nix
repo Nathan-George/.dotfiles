@@ -67,6 +67,9 @@
     jack.enable = true;
   };
 
+  # enable fingerprint
+  services.fprintd.enable = true;
+
   # enable flakes 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
