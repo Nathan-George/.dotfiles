@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 with pkgs; let
   # define R packages (used later)
@@ -9,7 +9,9 @@ in {
     ./assets
     ./scripts
     ./modules/wallpaper.nix
+    ./config/hypridle.nix
     ./config/hyprland.nix
+    ./config/hyprlock.nix
     ./config/lf.nix
   ];
 
