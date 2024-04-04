@@ -95,6 +95,10 @@
     xkbVariant = "";
   };
 
+  # power/sleep options
+  services.logind.lidSwitch = "hibernate";
+  services.logind.powerKey = "ignore";
+
   # user account
   users.users.jayden = {
     isNormalUser = true;
