@@ -22,6 +22,7 @@
         "dunst"
         "discord"
         "hyprpaper"
+        "hypridle"
 
         # clipboard init
         "wl-clip-persist --clipboard both"
