@@ -14,7 +14,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, hyprland, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -24,8 +24,8 @@
     # nixos configuration
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
         inherit system;
+        specialArgs = { inherit hyprland; };
         modules = [
           ./configuration.nix
           nixos-hardware.nixosModules.framework-11th-gen-intel
