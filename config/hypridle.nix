@@ -1,11 +1,14 @@
 # hypridle config
-# MUST BE USED WITH HYPRLOCK
+# MUST BE USED WITH HYPRLAND AND HYPRLOCK
 
 { config, pkgs-unstable, lib, ... }:
 
 {
   # install hypridle package
   home.packages = [ pkgs-unstable.hypridle ];
+
+  # add to startup
+  wayland.windowManager.hyprland.settings.exec-once = [ "hypridle" ];
 
   # make config file
   xdg.configFile."hypr/hypridle.conf".text = ''

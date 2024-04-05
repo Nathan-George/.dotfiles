@@ -1,5 +1,5 @@
 # hyprlock config
-# MUST BE USED WITH HYPRIDLE
+# MUST BE USED WITH HYPRLAND AND HYPRIDLE
 
 { config, pkgs-unstable, lib, ... }:
 
