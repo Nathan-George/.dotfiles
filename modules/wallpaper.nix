@@ -14,6 +14,8 @@ with lib; {
   config = {
     # add hyprpaper package
     home.packages = [ pkgs.hyprpaper ];
+    # add to startup
+    wayland.windowManager.hyprland.settings.exec-once = [ "hyprpaper" ];
     # create hyprpaper config file
     xdg.configFile."hypr/hyprpaper.conf".text = ''
         preload = ${config.wallpaper}

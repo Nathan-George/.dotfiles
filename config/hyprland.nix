@@ -21,7 +21,6 @@
         "waybar"
         "dunst"
         "discord"
-        "hyprpaper"
 
         # clipboard init
         "wl-clip-persist --clipboard both"
