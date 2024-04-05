@@ -77,11 +77,6 @@
     audioFileExtensions = [
       "aac" "au" "flac" "m4a" "mid" "midi" "mka" "mp3" "mpc" "ogg" "ra" "wav" "oga" "opus" "spx" "xspf"
     ];
-    codeFileExtensions = [
-      "styl" "sass" "scss" "htm" "html" "slim" "haml" "ejs" "css" "less" "rmd" "json" "webmanifest" "js" "mjs" "jsx" "rb"
-      "gemspec" "rake" "php" "twig" "cpp" "c++" "cxx" "cc" "cp" "c" "cs" "h" "hh" "hpp" "hxx" "hs" "lhs" "lua" "java" "sh"
-      "fish" "bash" "zsh" "ksh" "csh" "awk" "ps1" "ml" "mli" "scala" "go"
-    ];
 
   in ''
     # default file types
@@ -109,55 +104,12 @@
     # audio formats
     ${lib.concatMapStrings (str: "*."+str+" \n") audioFileExtensions}
 
-    # code
-    ${lib.concatMapStrings (str: "*."+str+" \n") codeFileExtensions}
-    *.py            
-    *.pyc           
-    *.pyo           
-    *.pyd           
-    *.nix           
-
-    # databases
-    *.db            
-    *.sql           
-
-    # configuration
-    *.conf          
-    *.ini           
-    *.yml           
-    *.yaml          
-    *.toml          
-    *.bat           
-    *.mk            
-    
-    # adobe stuff
-    *.ai            
-    *.psd           
-
-    # latex
-    *.tex           
-
-    # markdown
-    *.md            
-    *.mdx           
-    *.markdown      
-
     # fonts
     *.ttf           
     *.otf           
 
     # misc
     *.pdf           
-    *.dump          
-    *.diff          
-    *.ds_store      
-    *.DS_Store      
-    *.gitconfig     
-    *.gitignore     
-    *.gitattributes 
-    *.bashrc        
-    *makefile       
-    *Makefile       
   '';
 
 }
