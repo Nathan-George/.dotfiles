@@ -8,6 +8,7 @@ in {
   imports = [
     ./assets
     ./scripts
+    ./modules/colorscheme.nix
     ./modules/wallpaper.nix
     ./config/hypridle.nix
     ./config/hyprland.nix
