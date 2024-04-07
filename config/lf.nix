@@ -20,16 +20,49 @@
     };
 
     commands = {
-  
+      zip = ''%${pkgs.zip}/bin/zip -r "$f.zip" "$f"'';
+      unzip = ''''${{
+        case "$f" in
+          *.zip) ${pkgs.unzip}/bin/unzip "$f" ;;
+          *.tar.gz) tar -xzvf "$f" ;;
+          *.tar.bz2) tar -xjvf "$f" ;;
+          *.tar) tar -xvf "$f" ;;
+          *) echo "Unsupported archive format" ;;
+        esac
+      }}'';
+      open = ''''${{
+        case $(${pkgs.file}/bin/file --mime-type "$f" -bL) in
+          text/*|application/json) $EDITOR "$f";;
+          application/x-executable) "$f";;
+          *) xdg-open "$f" ;;
+        esac
+      }}'';
+      mkdir = ''''${{
+        printf "Directory Name: "
+        read ans
+        mkdir $ans
+      }}'';
+      mkfile = ''''${{
+        printf "File Name: "
+        read ans
+        $EDITOR $ans
+      }}'';
     };
 
     keybindings = {
-      h = "set hidden!";
+      h = "set hidden!"; # toggle hidden files
       c = "copy";
       x = "cut";
       v = "paste";
       "<esc>" = "quit";
       "<delete>" = "delete";
+      "<enter>" = "open";
+      V = "%code $f";
+      az = "zip";
+      au = "unzip";
+      m = "";
+      mf = "mkfile";
+      md = "mkdir";
     };
 
     extraConfig = 
@@ -41,12 +74,10 @@
         h=$3
         x=$4
         y=$5
-        
         if [[ "$( ${pkgs.file}/bin/file -Lb --mime-type "$file")" =~ ^image ]]; then
             ${pkgs.kitty}/bin/kitty +kitten icat --silent --stdin no --transfer-mode file --place "''${w}x''${h}@''${x}x''${y}" "$file" < /dev/null > /dev/tty
             exit 1
         fi
-        
         ${pkgs.pistol}/bin/pistol "$file"
       '';
       cleaner = pkgs.writeShellScriptBin "clean.sh" ''
