@@ -126,6 +126,7 @@
     playerctl
     pypy3
     python3
+    unzip
     vim
     zip
 
