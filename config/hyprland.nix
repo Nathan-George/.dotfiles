@@ -18,7 +18,6 @@
       exec-once = [
 
         # startup apps
-        "waybar"
         "dunst"
         "discord"
 

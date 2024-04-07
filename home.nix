@@ -13,6 +13,7 @@ in {
     ./config/hypridle.nix
     ./config/hyprland.nix
     ./config/hyprlock.nix
+    ./config/waybar.nix
     ./config/lf.nix
   ];
 
@@ -72,13 +73,7 @@ in {
     # icon theme
     flat-remix-icon-theme # https://drasite.com/flat-remix
 
-    # fonts
-    font-awesome # for waybar
-
   ];
-
-  # enable waybar
-  programs.waybar.enable = true;
 
   # set wallpaper
   wallpaper = config.assets.wallpaper;

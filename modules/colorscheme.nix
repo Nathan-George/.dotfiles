@@ -21,27 +21,27 @@ in {
   
   # colorScheme option
   options.colorScheme = {
-        base00 = hexColorOption;
-        base01 = hexColorOption;
-        base02 = hexColorOption;
-        base03 = hexColorOption;
-        base04 = hexColorOption;
-        base05 = hexColorOption;
-        base06 = hexColorOption;
-        base07 = hexColorOption;
-        base08 = hexColorOption;
-        base09 = hexColorOption;
-        base0A = hexColorOption;
-        base0B = hexColorOption;
-        base0C = hexColorOption;
-        base0D = hexColorOption;
-        base0E = hexColorOption;
-        base0F = hexColorOption;
+    base00 = hexColorOption;
+    base01 = hexColorOption;
+    base02 = hexColorOption;
+    base03 = hexColorOption;
+    base04 = hexColorOption;
+    base05 = hexColorOption;
+    base06 = hexColorOption;
+    base07 = hexColorOption;
+    base08 = hexColorOption;
+    base09 = hexColorOption;
+    base0A = hexColorOption;
+    base0B = hexColorOption;
+    base0C = hexColorOption;
+    base0D = hexColorOption;
+    base0E = hexColorOption;
+    base0F = hexColorOption;
   };
 
   # define color scheme (using gruvbox for testing)
   config.colorScheme = {
-    base00 = "282828"; # ----
+    base00 = "1d2021"; # ----
     base01 = "3c3836"; # ---
     base02 = "504945"; # --
     base03 = "665c54"; # -
