@@ -69,7 +69,7 @@
         };
         "format" = "{capacity}% {icon}";
         "format-full" = "{capacity}% {icon}";
-        "format-charging" = "{capacity}% ";
+        "format-charging" = "{capacity}% ";
         "format-plugged" = "{capacity}% ";
         "format-alt" = "{time} {icon}";
         "format-icons" = ["" "" "" "" ""];
@@ -131,7 +131,7 @@
       #battery.warning {
         color: #${colorScheme.base0A};
       }
-      #battery.critical, #idle_inhibitor.activated {
+      #battery.critical, #idle_inhibitor.activated, #network.disconnected {
         color: #${colorScheme.base08};
       }
     '';
