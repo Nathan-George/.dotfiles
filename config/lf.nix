@@ -63,6 +63,7 @@
       m = "";
       mf = "mkfile";
       md = "mkdir";
+      "<c-a>" = "glob-select *";
     };
 
     extraConfig = 
