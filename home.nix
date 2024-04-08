@@ -13,6 +13,7 @@ in {
     ./config/hypridle.nix
     ./config/hyprland.nix
     ./config/hyprlock.nix
+    ./config/kitty.nix
     ./config/waybar.nix
     ./config/lf.nix
   ];
