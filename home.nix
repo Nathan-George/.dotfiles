@@ -55,6 +55,7 @@ in {
     RStudio-with-my-packages
 
     # hyprland stuff
+    hyprpicker
     kitty
     rofi-wayland
 
@@ -88,7 +89,7 @@ in {
 
   # environment variables
   home.sessionVariables = {
-
+    
   };
 
 }

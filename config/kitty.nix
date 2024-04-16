@@ -38,7 +38,7 @@
       color14 = "#${config.colorScheme.base0C}";
       # white
       color7 = "#${config.colorScheme.base04}";
-      color15 = "#${config.colorScheme.base05}";
+      color15 = "#${config.colorScheme.base06}";
     };
   };
 }

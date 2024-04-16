@@ -38,8 +38,8 @@
         border_size = 2;
         gaps_in = 0;
         gaps_out = 0;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = "rgb(${config.colorScheme.base0B}) rgb(${config.colorScheme.base0A}) 45deg";
+        "col.inactive_border" = "rgb(${config.colorScheme.base02})";
         layout = "dwindle";
         resize_on_border = true;
         allow_tearing = false; # https://wiki.hyprland.org/Configuring/Tearing/
@@ -114,6 +114,7 @@
         "$mainMod, E, exec, dolphin"
         "$mainMod, P, pseudo, "
         "$mainMod, J, togglesplit, "
+        "$mainMod, F, togglefloating, "
 
         # screenshot
         ", Print, exec, grim -g \"$(slurp -d)\""
@@ -152,7 +153,7 @@
 
       bindr = [
         # app launcher
-        "$mainMod, SUPER_L, exec, ${config.scripts.appLauncher}"
+        "$mainMod, $mainMod_L, exec, ${config.scripts.appLauncher}"
       ];
 
       bindl = [
