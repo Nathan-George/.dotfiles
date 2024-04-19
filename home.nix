@@ -7,6 +7,7 @@ in {
 
   imports = [
     ./assets
+    ./config/yakuake.nix
   ];
 
   home = rec {
