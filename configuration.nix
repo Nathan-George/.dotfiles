@@ -1,4 +1,4 @@
-{ config, pkgs, hyprland, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -30,19 +30,17 @@
   # enable X11 windowing system
   services.xserver.enable = true;
 
-  # enable hyprland
-  programs.hyprland = {
-    enable = true;
-    package = hyprland.packages."${pkgs.system}".hyprland;
-    xwayland.enable = true;
-  };
+  # idk about this stufzf
   hardware = {
     opengl.enable = true;
     nvidia.modesetting.enable = true; # probably need this
   };
 
   # enable sddm
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
   
   # desktop portals
   xdg.portal.enable = true;
@@ -106,6 +104,11 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
+  # enable kde plasma
+  services.desktopManager.plasma6.enable = true;
+  # make default
+  services.displayManager.defaultSession = "plasma";
+
   # make apps not blurry
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -124,7 +127,7 @@
     killall
     neofetch
     playerctl
-    pypy3
+    # pypy3  it broken :(
     python3
     unzip
     vim

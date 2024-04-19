@@ -9,11 +9,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # hardware specific configuration
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    # hyprland
-    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system}; 
@@ -23,7 +21,6 @@
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit hyprland; };
         modules = [
           ./configuration.nix
           nixos-hardware.nixosModules.framework-11th-gen-intel

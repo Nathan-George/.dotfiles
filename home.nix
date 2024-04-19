@@ -7,15 +7,6 @@ in {
 
   imports = [
     ./assets
-    ./scripts
-    ./modules/colorscheme.nix
-    ./modules/wallpaper.nix
-    ./config/hypridle.nix
-    ./config/hyprland.nix
-    ./config/hyprlock.nix
-    ./config/kitty.nix
-    ./config/waybar.nix
-    ./config/lf.nix
   ];
 
   home = rec {
@@ -54,38 +45,7 @@ in {
     eclipses.eclipse-java
     RStudio-with-my-packages
 
-    # hyprland stuff
-    hyprpicker
-    kitty
-    rofi-wayland
-
-    # notifications
-    dunst
-    libnotify # (dunst needs this)
-
-    # clipboard
-    cliphist
-    wl-clipboard
-    wl-clip-persist
-
-    # screenshot
-    grim
-    slurp
-
-    # icon theme
-    flat-remix-icon-theme # https://drasite.com/flat-remix
-
   ];
-
-  # set wallpaper
-  wallpaper = config.assets.wallpaper;
-
-  home.file = {
-
-    # cursor theme
-    ".icons/default".source = "${pkgs.simp1e-cursors}/share/icons/Simp1e-Adw";
-
-  };
 
   # environment variables
   home.sessionVariables = {
