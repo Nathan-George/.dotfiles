@@ -30,17 +30,8 @@
   # enable X11 windowing system
   services.xserver.enable = true;
 
-  # idk about this stufzf
-  hardware = {
-    opengl.enable = true;
-    nvidia.modesetting.enable = true; # probably need this
-  };
-
   # enable sddm
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
+  services.displayManager.sddm.enable = true;
   
   # desktop portals
   xdg.portal.enable = true;
@@ -108,6 +99,7 @@
   services.desktopManager.plasma6.enable = true;
   # make default
   services.displayManager.defaultSession = "plasma";
+  services.displayManager.sddm.wayland.enable = true;
 
   # make apps not blurry
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
