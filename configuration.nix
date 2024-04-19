@@ -42,7 +42,7 @@
   };
 
   # enable sddm
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
   
   # desktop portals
   xdg.portal.enable = true;
@@ -91,8 +91,8 @@
   };
   # X11 keymap
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
 
   # power/sleep options

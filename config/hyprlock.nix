@@ -1,11 +1,11 @@
 # hyprlock config
 # MUST BE USED WITH HYPRLAND AND HYPRIDLE
 
-{ config, pkgs-unstable, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # install hypridle package
-  home.packages = [ pkgs-unstable.hyprlock ];
+  home.packages = [ pkgs.hyprlock ];
 
   # make config file
   xdg.configFile."hypr/hyprlock.conf".text = ''
