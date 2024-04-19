@@ -3,9 +3,9 @@
   
   inputs = {
     # nix packages
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     # home manager
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # hardware specific configuration
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";

@@ -29,9 +29,6 @@
 
   # enable X11 windowing system
   services.xserver.enable = true;
-
-  # enable sddm
-  services.displayManager.sddm.enable = true;
   
   # desktop portals
   xdg.portal.enable = true;
@@ -95,11 +92,12 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
-  # enable kde plasma
-  services.desktopManager.plasma6.enable = true;
-  # make default
-  services.displayManager.defaultSession = "plasma";
-  services.displayManager.sddm.wayland.enable = true;
+  # kde plasma
+  services.xserver.desktopManager.plasma5.enable = true;
+
+  # sddm
+  services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.displayManager.defaultSession = "plasma (Wayland)";
 
   # make apps not blurry
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -124,6 +122,9 @@
     unzip
     vim
     zip
+
+    # home manager
+    home-manager
 
   ];
   
