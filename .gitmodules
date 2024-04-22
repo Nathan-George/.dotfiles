@@ -1,3 +1,0 @@
-[submodule "plasma-dotfiles"]
-	path = modules/plasma-dotfiles
-  url = git@github.com:JaydenPahukula/plasma-dotfiles.git
