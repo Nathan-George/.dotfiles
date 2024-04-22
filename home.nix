@@ -38,6 +38,7 @@ in {
     
     # apps
     discord
+    kate
     obsidian
     spotify
     vscode
