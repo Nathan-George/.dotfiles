@@ -155,7 +155,7 @@ in {
     };
     SortingChoice = mkOption {
       type = types.enum [ "Natural" "CaseInsensitive" "CaseSensitive" ];
-      description = "Choose Natural, Case Sensitive, or Case Insensitive order of sorting the items";;
+      description = "Choose Natural, Case Sensitive, or Case Insensitive order of sorting the items";
       default = "Natural";
       # <emit signal="sortingChoiceChanged" />
     };

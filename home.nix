@@ -6,7 +6,6 @@ with pkgs; let
 in {
 
   imports = [
-    ./modules
     ./config/yakuake.nix
   ];
 
