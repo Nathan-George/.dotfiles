@@ -155,4 +155,21 @@
     pypy = "pypy3";
   };
 
+  # wordpress stuff
+  services.wordpress.sites."localhost" = let
+    wpcode-plugin = pkgs.stdenv.mkDerivation rec {
+      name = "insert-headers-and-footers";
+      version = "2.1.11";
+      src = pkgs.fetchzip {
+        url = "https://downloads.wordpress.org/plugin/${name}.${version}.zip";
+        hash = "sha256-TxtXyl/MKfWireV1ZVPawT3TlwXFy5j9F7nXiyTq1kw=";
+      };
+      installPhase = "mkdir -p $out; cp -R * $out/";
+    };
+  in {
+    plugins = {
+      inherit wpcode-plugin;
+    };
+  };
+
 }
