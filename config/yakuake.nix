@@ -8,9 +8,24 @@
   # install package
   home.packages = [ pkgs.yakuake ];
 
-  # TODO: declaratively add yakuake to startup
+  # start yakuake on boot
+  xdg.configFile."autostart/org.kde.yakuake.desktop".text = ''
+    [Desktop Entry]
+    Categories=Qt;KDE;System;TerminalEmulator;
+    Comment=A drop-down terminal emulator based on KDE Konsole technology.
+    DBusActivatable=true
+    Exec=yakuake
+    GenericName=Drop-down Terminal
+    Icon=yakuake
+    Name=Yakuake
+    Terminal=false
+    Type=Application
+    X-DBUS-ServiceName=org.kde.yakuake
+    X-DBUS-StartupType=Unique
+    X-KDE-StartupNotify=false
+  '';
 
-  # config
+  # config file
   xdg.configFile."yakuakerc".text = ''
     [Animation]
     Frames=10
