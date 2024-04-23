@@ -1,9 +1,9 @@
 # dolphin icon mode settings
 
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 
 {
-  options.dolphin.iconMode = with lib; {
+  options.plasma.dolphin.iconMode = with lib; {
     EditableUrl = mkOption {
       type = types.bool;
       description = "Should the URL be editable for the user";

@@ -5,6 +5,9 @@
 {
   # import option declarations
   imports = [
+    ./compactmode.nix
+    ./contentdisplay.nix
+    ./contextmenu.nix
     ./general.nix
     ./iconmode.nix
   ];
@@ -27,9 +30,16 @@
   in {
     # create dolphinrc
     xdg.configFile."dolphinrc1".text = ''
+      [CompactMode]
+      ${optionsToStrings config.plasma.dolphin.compactMode}
+      [ContentDisplay]
+      ${optionsToStrings config.plasma.dolphin.contentDisplay}
+      [ContextMenu]
+      ${optionsToStrings config.plasma.dolphin.contextMenu}
       [General]
       ${optionsToStrings config.plasma.dolphin.general}
       [IconMode]
+      ${optionsToStrings config.plasma.dolphin.iconMode}
     '';
   };
 }

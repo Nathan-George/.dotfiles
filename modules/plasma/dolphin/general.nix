@@ -1,6 +1,6 @@
 # dolphin general settings
 
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 
 let
   CompletionModes = [ "None" "Auto" "Man" "Shell" "Popup" "PopupAuto" ];
@@ -118,11 +118,10 @@ in {
       description = "Show item information on hover";
       default = false;
     };
-    ViewPropsTimestamp = mkOption {
-      type = types.str;
-      description = "Timestamp since when the view properties are valid";
-      default = "2024,4,20,20,46,36.941"; # TODO: change this
-    };
+    # ViewPropsTimestamp = mkOption {
+    #   type = types.str; # idk
+    #   description = "Timestamp since when the view properties are valid";
+    # };
     AutoExpandFolders = mkOption {
       type = types.bool;
       description = "Use auto-expanding folders for all view types";
