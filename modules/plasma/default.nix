@@ -1,5 +1,7 @@
 {
   imports = [
+    ./constants.nix
+
     ./dolphin
   ];
 }

@@ -1,3 +1,4 @@
+# dolphin module
 
 { config, options, lib, ... }:
 
@@ -5,6 +6,7 @@
   # import option declarations
   imports = [
     ./general.nix
+    ./iconmode.nix
   ];
 
   config = with lib; let
@@ -26,7 +28,8 @@
     # create dolphinrc
     xdg.configFile."dolphinrc1".text = ''
       [General]
-      ${optionsToStrings config.dolphin.general}
+      ${optionsToStrings config.plasma.dolphin.general}
+      [IconMode]
     '';
   };
 }

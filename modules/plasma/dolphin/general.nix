@@ -1,4 +1,4 @@
-# dolphin modules
+# dolphin general settings
 
 { config, pkgs, lib, ... }:
 
@@ -6,16 +6,16 @@ let
   CompletionModes = [ "None" "Auto" "Man" "Shell" "Popup" "PopupAuto" ];
   # ^https://api.kde.org/frameworks/kcompletion/html/classKCompletion.html#a927c284d89e41d976412201b68ca67e9
 in {
-  options.dolphin.general = with lib; {
+  options.plasma.dolphin.general = with lib; {
     EditableUrl = mkOption {
       type = types.bool;
       description = "Should the URL be editable for the user";
       default = false;
     };
     UrlCompletionMode = mkOption {
-      type = types.enum CompletionModes;
+      type = types.int;
       description = "Text completion mode of the URL Navigator";
-      default = "PopupAuto";
+      default = config.plasma.constants.KCompletion.CompletionModes.PopupAuto;
     };
     ShowFullPath = mkOption {
       type = types.bool;
