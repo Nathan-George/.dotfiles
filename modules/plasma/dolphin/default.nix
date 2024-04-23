@@ -28,31 +28,40 @@
         then strings.concatStringsSep "," (lists.forEach obj anyToString)
       else builtins.toString obj;
 
+    # remove defaults from option set
+    removeDefaults = o: c: attrsets.filterAttrs (name: val: val != o."${name}".default) c;
+
     # convert attribute set of options to strings
-    optionsToStrings = o: strings.concatStrings (mapAttrsToList (name: value: name+"="+(anyToString value)+"\n") o);
+    optionsToStrings = o: mapAttrsToList (name: val: name+"="+(anyToString val)+"\n") o;
+
+    # create section of dolphinrc file
+    # inputs are attribute set of options, and corresponding attribute set of configuration
+    makeSection = o: c: strings.concatStrings (optionsToStrings (removeDefaults o c));
+
+    opts = options.plasma.dolphin;
+    cfg = config.plasma.dolphin;
 
   in {
     # create dolphinrc
     xdg.configFile."dolphinrc1".text = ''
       [CompactMode]
-      ${optionsToStrings config.plasma.dolphin.compactMode}
+      ${makeSection opts.compactMode cfg.compactMode}
       [ContentDisplay]
-      ${optionsToStrings config.plasma.dolphin.contentDisplay}
+      ${makeSection opts.contentDisplay cfg.contentDisplay}
       [ContextMenu]
-      ${optionsToStrings config.plasma.dolphin.contextMenu}
+      ${makeSection opts.contextMenu cfg.contextMenu}
       [DetailsMode]
-      ${optionsToStrings config.plasma.dolphin.detailsMode}
+      ${makeSection opts.detailsMode cfg.detailsMode}
       [General]
-      ${optionsToStrings config.plasma.dolphin.general}
+      ${makeSection opts.general cfg.general}
       [IconMode]
-      ${optionsToStrings config.plasma.dolphin.iconMode}
-      
+      ${makeSection opts.iconMode cfg.iconMode}
       [FoldersPanel]
-      ${optionsToStrings config.plasma.dolphin.panels.foldersPanel}
+      ${makeSection opts.panels.foldersPanel cfg.panels.foldersPanel}
       [InformationPanel]
-      ${optionsToStrings config.plasma.dolphin.panels.informationPanel}
+      ${makeSection opts.panels.informationPanel cfg.panels.informationPanel}
       [PlacesPanel]
-      ${optionsToStrings config.plasma.dolphin.panels.placesPanel}
+      ${makeSection opts.panels.placesPanel cfg.panels.placesPanel}
     '';
   };
 }
