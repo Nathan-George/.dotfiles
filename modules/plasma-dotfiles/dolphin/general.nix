@@ -1,6 +1,6 @@
 # dolphin modules
 
-{ inputs, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   CompletionModes = [ "None" "Auto" "Man" "Shell" "Popup" "PopupAuto" ];
@@ -121,6 +121,7 @@ in {
     ViewPropsTimestamp = mkOption {
       type = types.str;
       description = "Timestamp since when the view properties are valid";
+      default = "2024,4,20,20,46,36.941"; # TODO: change this
     };
     AutoExpandFolders = mkOption {
       type = types.bool;
