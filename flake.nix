@@ -22,7 +22,7 @@
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./configuration.nix
+          ./system/configuration.nix
           nixos-hardware.nixosModules.framework-11th-gen-intel
         ];
       };
@@ -33,8 +33,7 @@
       jayden = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./modules
-          ./home.nix
+          ./user/home.nix
         ];
       };
     };
