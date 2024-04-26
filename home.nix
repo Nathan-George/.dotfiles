@@ -6,6 +6,7 @@ with pkgs; let
 in {
 
   imports = [
+    ./config/lf.nix
     ./config/yakuake.nix
   ];
 
