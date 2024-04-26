@@ -94,6 +94,10 @@
 
   # kde plasma
   services.xserver.desktopManager.plasma5.enable = true;
+  # omit unused stuff
+  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+    oxygen
+  ];
 
   # sddm
   services.xserver.displayManager.sddm.enable = true;
