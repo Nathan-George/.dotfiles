@@ -37,6 +37,7 @@ in {
   home.packages = with pkgs; [
     
     # apps
+    beeper
     discord
     kate
     obsidian
