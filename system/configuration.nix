@@ -103,6 +103,9 @@
   services.xserver.displayManager.sddm.enable = true;
   # services.xserver.displayManager.defaultSession = "plasma (Wayland)";
 
+  # disable network wait service
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   # make apps not blurry
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
