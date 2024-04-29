@@ -26,6 +26,9 @@ in {
     userEmail = "jayden.pahukula@gmail.com";
   };
 
+  # enable bash
+  programs.bash.enable = true;
+
   # allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

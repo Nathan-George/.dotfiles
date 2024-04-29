@@ -7,6 +7,12 @@
   # install font awesome
   home.packages = [ pkgs.font-awesome ];
 
+  # lfcd wrapper script
+  home.shellAliases.lf = "source ${pkgs.writeShellScript "lfcd" ''
+    # open lf, then cd to the last directory upon close
+    cd "$(command lf -print-last-dir "$@")"
+  ''}";
+
   # config
   programs.lf = {
     enable = true;
