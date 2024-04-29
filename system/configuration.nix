@@ -124,7 +124,7 @@
     killall
     neofetch
     playerctl
-    # pypy3  it broken :(
+    pypy3
     python3
     unzip
     vim
@@ -157,9 +157,10 @@
     XDG_STATE_HOME  = "$HOME/.local/state";
   };
 
-  # bash aliases
-  programs.bash.shellAliases = {
+  # shell aliases
+  environment.shellAliases = {
     pypy = "pypy3";
+    py = "python";
   };
 
   # wordpress stuff
