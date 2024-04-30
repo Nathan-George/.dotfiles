@@ -47,15 +47,13 @@ in {
     spotify
     vscode
 
+    # utils
+    trashy
+
     # school stuff
     eclipses.eclipse-java
     RStudio-with-my-packages
 
   ];
-
-  # environment variables
-  home.sessionVariables = {
-    
-  };
 
 }

@@ -23,10 +23,11 @@
       icons = true;
       ignorecase = true;
       wrapscroll = true;
+      filesep = " ";
     };
 
     commands = {
-      zip = ''%${pkgs.zip}/bin/zip -r "$f.zip" "$f"'';
+      zip = "%${pkgs.zip}/bin/zip -r \"$f.zip\" \"$f\"";
       unzip = ''''${{
         case "$f" in
           *.zip) ${pkgs.unzip}/bin/unzip "$f" ;;
@@ -53,6 +54,8 @@
         read ans
         $EDITOR $ans
       }}'';
+      trash = "%${pkgs.trashy}/bin/trash $fx";
+      untrash = "%${pkgs.trashy}/bin/trash restore --force -r 0";
     };
 
     keybindings = {
@@ -61,7 +64,6 @@
       x = "cut";
       v = "paste";
       "<esc>" = "quit";
-      "<delete>" = "delete";
       "<enter>" = "open";
       V = "%code $f";
       az = "zip";
@@ -69,7 +71,11 @@
       m = "";
       mf = "mkfile";
       md = "mkdir";
+      "<delete>" = "trash";
+      "<c-delete>" = "untrash";
+      "<space>" = "toggle";
       "<c-a>" = "glob-select *";
+      "<c-d>" = "unselect";
     };
 
     extraConfig = 
