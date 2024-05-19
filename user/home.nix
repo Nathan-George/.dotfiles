@@ -7,6 +7,7 @@ in {
 
   imports = [
     ./config/lf.nix
+    ./config/qimgv.nix
     ./config/yakuake.nix
   ];
 
@@ -55,5 +56,13 @@ in {
     RStudio-with-my-packages
 
   ];
+
+  # open pdfs with chrome
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = "google-chrome.desktop";
+    };
+  };
 
 }
