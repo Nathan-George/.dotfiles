@@ -5,24 +5,37 @@
 
 {
 
-  # install package
-  home.packages = [ pkgs.yakuake ];
+  home.packages = [
+    pkgs.yakuake # install yakuake
+    (import ./yakuake-session.nix { inherit pkgs; }) # create yakuake-session script
+  ];
+
+  # override default desktop entry
+  xdg.desktopEntries."org.kde.yakuake" = {
+    name = "Yakuake";
+    genericName = "Drop-down Terminal";
+    comment = "A drop-down terminal emulator based on KDE Konsole technology.";
+    exec = "yakuake-session";
+    icon = "yakuake";
+    settings = {
+      X-DBUS-StartupType = "Unique";
+      X-DBUS-ServiceName = "org.kde.yakuake";
+      DBusActivatable = "true";
+    };
+    startupNotify = false;
+  };
+
+  # make yakuake the default terminal
+  home.sessionVariables = {
+    TERMINAL = "yakuake-session";
+  };
 
   # start yakuake on boot
   xdg.configFile."autostart/org.kde.yakuake.desktop".text = ''
     [Desktop Entry]
-    Categories=Qt;KDE;System;TerminalEmulator;
-    Comment=A drop-down terminal emulator based on KDE Konsole technology.
-    DBusActivatable=true
-    Exec=yakuake
-    GenericName=Drop-down Terminal
-    Icon=yakuake
     Name=Yakuake
-    Terminal=false
-    Type=Application
-    X-DBUS-ServiceName=org.kde.yakuake
-    X-DBUS-StartupType=Unique
-    X-KDE-StartupNotify=false
+    Exec=yakuake
+    icon=yakuake
   '';
 
   # config file

@@ -13,6 +13,14 @@
     cd "$(command lf -print-last-dir "$@")"
   ''}";
 
+  # make lf default file explorer
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = "lf.desktop";
+    };
+  };
+
   # config
   programs.lf = {
     enable = true;
