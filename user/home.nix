@@ -3,6 +3,7 @@
 {
 
   imports = [
+    ./config/chrome.nix
     ./config/lf.nix
     ./config/qimgv.nix
     ./config/yakuake.nix
@@ -49,13 +50,5 @@
     trashy
 
   ];
-
-  # open pdfs with chrome
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "application/pdf" = "google-chrome.desktop";
-    };
-  };
 
 }
