@@ -30,12 +30,21 @@
     TERMINAL = "yakuake-session";
   };
 
-  # start yakuake on boot
+  # start yakuake on boot (there has got to be a better way to do this)
   xdg.configFile."autostart/org.kde.yakuake.desktop".text = ''
     [Desktop Entry]
-    Name=Yakuake
+    Comment=A drop-down terminal emulator based on KDE Konsole technology.
+    DBusActivatable=true
     Exec=yakuake
-    icon=yakuake
+    GenericName=Drop-down Terminal
+    Icon=yakuake
+    Name=Yakuake
+    StartupNotify=false
+    Terminal=false
+    Type=Application
+    Version=1.4
+    X-DBUS-ServiceName=org.kde.yakuake
+    X-DBUS-StartupType=Unique
   '';
 
   # config file
