@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
-with pkgs; let
-  # define R packages (used later)
-  RStudio-with-my-packages = rstudioWrapper.override{ packages = with rPackages; [ mosaic ggformula dplyr Lock5Data knitr ]; };
-in {
+{
 
   imports = [
     ./config/lf.nix
@@ -50,10 +47,6 @@ in {
 
     # utils
     trashy
-
-    # school stuff
-    eclipses.eclipse-java
-    RStudio-with-my-packages
 
   ];
 
