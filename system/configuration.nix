@@ -128,6 +128,7 @@
     python3
     unzip
     vim
+    wget
     zip
 
     # home manager
