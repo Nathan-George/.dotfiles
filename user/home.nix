@@ -51,4 +51,10 @@
 
   ];
 
+  # cursor
+  home.pointerCursor = {
+    name = "Hackneyed";
+    package = pkgs.hackneyed;
+  };
+
 }
