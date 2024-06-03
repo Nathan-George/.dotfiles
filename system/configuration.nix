@@ -113,7 +113,7 @@
 
     settings={
       default_session={
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --user-menu -rti --asterisks --cmd labwc -s alacritty";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --user-menu -rti --asterisks --cmd 'labwc -s alacritty'";
         user = "greeter";
       };
     };
@@ -135,9 +135,10 @@
   # system packages
   environment.systemPackages = with pkgs; [
 
+    # labwc
     labwc
+    wlr-randr
     alacritty
-    bemenu
 
     # apps
     google-chrome

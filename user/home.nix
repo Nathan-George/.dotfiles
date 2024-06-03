@@ -6,7 +6,10 @@
     ./config/chrome.nix
     ./config/lf.nix
     ./config/qimgv.nix
+    ./config/waybar.nix
     ./config/yakuake.nix
+    ./scripts
+    ./modules/labwc-manager
   ];
 
   home = rec {
