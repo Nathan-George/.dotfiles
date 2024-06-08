@@ -1,4 +1,4 @@
-# ~/config/labwc/rc.xml
+# ~/.config/labwc/rc.xml
 
 { config, lib, ... }:
 
