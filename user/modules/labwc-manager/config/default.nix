@@ -15,11 +15,10 @@
     ./desktops.nix
     ./margin.nix
     ./regions.nix
+    ./keyboard.nix
   ];
 
   xdg.configFile."labwc/rctest.xml".text = with lib; let
-
-    # indent = size: strings.fixedWidthString (size*2) " " "";
     
     toStr = obj:
       if isBool obj && obj
@@ -28,26 +27,6 @@
         then "no"
       else toString obj;
 
-    # convert attribute set to xml string
-    # toXML = cfg: i: concatStringsSep "\n" (filter (s: (stringLength s) > 0) (flatten (
-    #   mapAttrsToList (name: val:
-    #     if isAttrs val
-    #       then [
-    #         ((indent i)+"<"+name+">")
-    #         (toXML (cfg."${name}") (i+1))
-    #         ((indent i)+"</"+name+">")
-    #       ]
-    #     else if isList val
-    #       then map (item: [
-    #         ((indent i)+"<"+name+">")
-    #         (toXML item (i+1))
-    #         ((indent i)+"</"+name+">")
-    #       ]) val
-    #     else
-    #       (indent i)+"<"+name+">"+(anyToString val)+"</"+name+">"
-    #   ) cfg
-    # )));
-
     # functions for pretty formatting
     space = n: strings.fixedWidthString n " " "";
     indent = num: s: removeSuffix (space num) (stringAsChars (c:
@@ -55,7 +34,7 @@
         then "\n"+(space num)
       else c
     ) s);
-    # formatList = 
+    formatList = f: list: removeSuffix "\n" (concatMapStrings f list); 
 
     cfg = config.programs.labwc.config;
 
@@ -78,108 +57,93 @@
         <cornerRadius>${toStr cfg.theme.cornerRadius}</cornerRadius>
         <keepBorder>${toStr cfg.theme.keepBorder}</keepBorder>
         <dropShadows>${toStr cfg.theme.dropShadows}</dropShadows>
-        ${concatMapStringsSep "    " (font: (indent 4 ''
-          <font place="${toStr font.place}">
-            <name>${toStr font.name}</name>
-            <size>${toStr font.size}</size>
-            <slant>${toStr font.slant}</slant>
-            <weight>${toStr font.weight}</weight>
+        ${indent 4 (formatList (x: ''
+          <font place="${toStr x.place}">
+            <name>${toStr x.name}</name>
+            <size>${toStr x.size}</size>
+            <slant>${toStr x.slant}</slant>
+            <weight>${toStr x.weight}</weight>
           </font>
-        '')) cfg.theme.fonts}
+        '') cfg.theme.fonts)}
       </theme>
-      <windowSwitcher show="yes" preview="yes" outlines="yes" allWorkspaces="no">
+      <windowSwitcher>
+        <show>${toStr cfg.windowSwitcher.show}</show>
+        <preview>${toStr cfg.windowSwitcher.preview}</preview>
+        <outlines>${toStr cfg.windowSwitcher.outlines}</outlines>
+        <allWorkspaces>${toStr cfg.windowSwitcher.allWorkspaces}</allWorkspaces>
         <fields>
-          <field content="type" width="25%" />
-          <field content="trimmed_identifier" width="25%" />
-          <field content="title" width="50%" />
+          ${indent 6 (formatList (x: ''
+            <field>
+              <content>${toStr x.content}</content>
+              <format>${toStr x.format}</format>
+              <width>${toStr x.width}</width>
+            </field>
+          '') cfg.windowSwitcher.fields)}
         </fields>
       </windowSwitcher>
       <resistance>
-        <screenEdgeStrength>20</screenEdgeStrength>
-        <windowEdgeStrength>20</windowEdgeStrength>
+        <screenEdgeStrength>${toStr cfg.resistance.screenEdgeStrength}</screenEdgeStrength>
+        <windowEdgeStrength>${toStr cfg.resistance.windowEdgeStrength}</windowEdgeStrength>
       </resistance>
-      <resize popupShow="Never" />
+      <resize>
+        <popupShow>${toStr cfg.resize.popupShow}</popupShow>
+      </resize>
       <focus>
-        <followMouse>no</followMouse>
-        <followMouseRequiresMovement>yes</followMouseRequiresMovement>
-        <raiseOnFocus>no</raiseOnFocus>
+        <followMouse>${toStr cfg.focus.followMouse}</followMouse>
+        <followMouseRequiresMovement>${toStr cfg.focus.followMouseRequiresMovement}</followMouseRequiresMovement>
+        <raiseOnFocus>${toStr cfg.focus.raiseOnFocus}</raiseOnFocus>
       </focus>
       <snapping>
-        <range>1</range>
-        <overlay enabled="yes">
-          <delay inner="500" outer="500" />
+        <range>${toStr cfg.snapping.range}</range>
+        <overlay>
+          <enabled>${toStr cfg.snapping.overlay.enabled}</enabled>
+          <delay>
+            <inner>${toStr cfg.snapping.overlay.delay.inner}</inner>
+            <outer>${toStr cfg.snapping.overlay.delay.outer}</outer>
+          </delay>
         </overlay>
-        <topMaximize>yes</topMaximize>
-        <notifyClient>always</notifyClient>
+        <topMaximize>${toStr cfg.snapping.topMaximize}</topMaximize>
+        <notifyClient>${toStr cfg.snapping.notifyClient}</notifyClient>
       </snapping>
       <desktops>
-        <popupTime>1000</popupTime>
+        <popupTime>${toStr cfg.desktops.popupTime}</popupTime>
         <names>
-          <name>Default</name>
+          ${indent 6 (formatList (x: ''
+            <name>${toStr x}</name>
+          '') cfg.desktops.names)}
         </names>
+        <number>${toStr cfg.desktops.number}</number>
       </desktops>
+      <regions>
+        ${indent 4 (formatList (x: ''
+          <region>
+            <name>${toStr x.name}</name>
+            <x>${toStr x.x}</x>
+            <y>${toStr x.y}</y>
+            <height>${toStr x.height}</height>
+            <width>${toStr x.width}</width>
+          </region>
+        '') cfg.regions)}
+      </regions>
       <keyboard>
-        <numlock>on</numlock>
-        <layoutScope>global</layoutScope>
-        <repeatRate>25</repeatRate>
-        <repeatDelay>600</repeatDelay>
-        <keybind key="A-Tab">
-          <action name="NextWindow" />
-        </keybind>
-        <keybind key="W-Return">
-          <action name="Execute" command="alacritty" />
-        </keybind>
-        <keybind key="A-F3">
-          <action name="Execute" command="bemenu-run" />
-        </keybind>
-        <keybind key="A-F4">
-          <action name="Close" />
-        </keybind>
-        <keybind key="W-a">
-          <action name="ToggleMaximize" />
-        </keybind>
-        <keybind key="A-Left">
-          <action name="MoveToEdge" direction="left" />
-        </keybind>
-        <keybind key="A-Right">
-          <action name="MoveToEdge" direction="right" />
-        </keybind>
-        <keybind key="A-Up">
-          <action name="MoveToEdge" direction="up" />
-        </keybind>
-        <keybind key="A-Down">
-          <action name="MoveToEdge" direction="down" />
-        </keybind>
-        <keybind key="W-Left">
-          <action name="SnapToEdge" direction="left" />
-        </keybind>
-        <keybind key="W-Right">
-          <action name="SnapToEdge" direction="right" />
-        </keybind>
-        <keybind key="W-Up">
-          <action name="SnapToEdge" direction="up" />
-        </keybind>
-        <keybind key="W-Down">
-          <action name="SnapToEdge" direction="down" />
-        </keybind>
-        <keybind key="A-Space">
-          <action name="ShowMenu" menu="client-menu" />
-        </keybind>
-        <keybind key="XF86_AudioLowerVolume">
-          <action name="Execute" command="amixer sset Master 5%-" />
-        </keybind>
-        <keybind key="XF86_AudioRaiseVolume">
-          <action name="Execute" command="amixer sset Master 5%+" />
-        </keybind>
-        <keybind key="XF86_AudioMute">
-          <action name="Execute" command="amixer sset Master toggle" />
-        </keybind>
-        <keybind key="XF86_MonBrightnessUp">
-          <action name="Execute" command="brightnessctl set +10%" />
-        </keybind>
-        <keybind key="XF86_MonBrightnessDown">
-          <action name="Execute" command="brightnessctl set 10%-" />
-        </keybind>
+        <numlock>${toStr cfg.keyboard.numlock}</numlock>
+        <layoutScope>${toStr cfg.keyboard.layoutScope}</layoutScope>
+        <repeatRate>${toStr cfg.keyboard.repeatRate}</repeatRate>
+        <repeatDelay>${toStr cfg.keyboard.repeatDelay}</repeatDelay>
+        ${indent 4 (formatList (x: ''
+          <keybind>
+            <key>${toStr x.key}</key>
+            <layoutDependant>${toStr x.layoutDependent}</layoutDependant>
+            ${indent 2 (formatList (y: ''
+              <action>
+                <name>${toStr y.name}</name>
+                ${indent 2 (formatList (z: ''
+                  <${z.name}>${toStr z.value}</${z.name}>
+                '') (mapAttrsToList (n: v: {name=n;value=v;}) (filterAttrs (n: v: n != "name") y)))}
+              </action>
+            '') x.actions)}
+          </keybind>
+        '') cfg.keyboard.keybinds)}${if cfg.keyboard.default then "<default/>" else ""}
       </keyboard>
       <mouse>
         <doubleClickTime>500</doubleClickTime>

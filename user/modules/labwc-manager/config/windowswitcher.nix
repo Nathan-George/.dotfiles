@@ -25,8 +25,7 @@
       description = "Show windows regardless of what workspace they are on. Default no (that is only windows on the current
         workspace are shown).";
     };
-    # am aware this path is dumb, it is for the xml format
-    fields.field = mkOption {
+    fields = mkOption {
       type = types.listOf (types.submodule {
         options = {
           content = mkOption {

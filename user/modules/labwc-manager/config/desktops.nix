@@ -5,14 +5,14 @@
 {
   options.programs.labwc.config.desktops = with lib; {
     number = mkOption {
-      type = types.int;
+      type = types.nullOr types.int;
       default = 1;
       description = "The number attribute defines the minimum number of workspaces. Default is 1. The number attribute is optional. If the number attribute
         is specified, names.name is not required.";
     };
-    names.name = mkOption {
+    names = mkOption {
       type = types.listOf types.str;
-      default = [];
+      default = [ "Default" ];
       description = "Specify the names of workspaces";
     };
     popupTime = mkOption {

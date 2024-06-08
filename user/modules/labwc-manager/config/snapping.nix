@@ -3,7 +3,7 @@
 { lib, ... }:
 
 {
-  options.programs.labwc.config.range = with lib; {
+  options.programs.labwc.config.snapping = with lib; {
     range = mkOption {
       type = types.int;
       default = 1;
