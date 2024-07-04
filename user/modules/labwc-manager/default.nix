@@ -5,6 +5,7 @@
     ./autostart
     ./config
     ./environment
+    ./menu
   ];
 
   options.programs.labwc.enable = lib.mkEnableOption ''

@@ -5,23 +5,23 @@
 {
   imports = [
     ./core.nix
+    ./desktops.nix
+    ./focus.nix
+    ./keyboard.nix
+    ./libinput.nix
+    ./magnifier.nix
+    ./margin.nix
+    ./menu.nix
+    ./mouse.nix
     ./placement.nix
-    ./theme.nix
-    ./windowswitcher.nix
+    ./regions.nix
     ./resistance.nix
     ./resize.nix
-    ./focus.nix
     ./snapping.nix
-    ./desktops.nix
-    ./margin.nix
-    ./regions.nix
-    ./keyboard.nix
-    ./mouse.nix
-    ./touch.nix
     ./tablet.nix
-    ./libinput.nix
-    ./menu.nix
-    ./magnifier.nix
+    ./theme.nix
+    ./touch.nix
+    ./windowswitcher.nix
   ];
 
   config = mkIf (config.programs.labwc.enable) {
