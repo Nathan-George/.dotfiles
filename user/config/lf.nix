@@ -46,7 +46,7 @@
         esac
       }}'';
       open = ''''${{
-        case $(${pkgs.file}/bin/file --mime-type "$f" -bL) in
+        case $(${pkgs.file}/bin/file --mime-type -bL "$f") in
           text/*|application/json) $EDITOR "$f";;
           application/x-executable) "$f";;
           *) xdg-open "$f" ;;
@@ -90,7 +90,12 @@
     extraConfig = 
     let
       previewer = pkgs.writeShellScriptBin "lf_previewer.sh" ''
-        ${pkgs.pistol}/bin/pistol "$1"
+        case "$(${pkgs.file}/bin/file --mime-type -b "$1")" in
+          *text/*)
+            ${pkgs.bat}/bin/bat --force-colorization --paging=never --style=changes,numbers --terminal-width $(($2 - 3)) "$1" && false;;
+          *)
+            ${pkgs.pistol}/bin/pistol "$1";;
+        esac
       '';
     in
     ''
