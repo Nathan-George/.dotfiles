@@ -53,6 +53,8 @@
 
     # utils
     trashy
+    grim
+    slurp
 
   ];
 
