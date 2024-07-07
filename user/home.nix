@@ -9,7 +9,6 @@
     ./config/waybar.nix
     ./config/yakuake.nix
     ./scripts
-    ./modules/labwc-manager
   ];
 
   home = rec {
@@ -38,6 +37,9 @@
   nixpkgs.config.permittedInsecurePackages = [ 
     "electron-25.9.0" # obsidian needs this
   ];
+
+  programs.labwc.enable = true;
+  # programs.labwc.config.core.decoration = true;
 
   home.packages = with pkgs; [
     

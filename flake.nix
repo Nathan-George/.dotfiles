@@ -9,12 +9,16 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # hardware specific configuration
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # labwc-manager
+    labwc-manager = {
+      url = "git+file:modules/labwc-manager";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, labwc-manager, ... }:
   let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system}; 
+    pkgs = nixpkgs.legacyPackages.${system};
   in {
 
     # nixos configuration
@@ -33,6 +37,7 @@
       jayden = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
+          labwc-manager.homeManagerModule
           ./user/home.nix
         ];
       };
