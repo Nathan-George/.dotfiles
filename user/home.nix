@@ -4,9 +4,12 @@
 
   imports = [
     ./config/chrome.nix
+    ./config/labwc.nix
     ./config/lf.nix
     ./config/qimgv.nix
+    ./config/waybar.nix
     ./config/yakuake.nix
+    ./scripts
   ];
 
   home = rec {
@@ -48,6 +51,8 @@
 
     # utils
     trashy
+    grim
+    slurp
 
   ];
 
