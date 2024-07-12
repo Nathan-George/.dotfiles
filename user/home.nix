@@ -3,6 +3,7 @@
 {
 
   imports = [
+    ./assets
     ./config/chrome.nix
     ./config/labwc.nix
     ./config/lf.nix
@@ -53,8 +54,6 @@
     trashy
     grim
     slurp
-
-    swaybg
 
   ];
 

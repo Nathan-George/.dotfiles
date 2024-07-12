@@ -109,7 +109,13 @@
         }
       ];
 
-      
     };
+
+    autostart = [
+      "${pkgs.swaybg} -i '${config.assets.wallpaper}'"
+      "${pkgs.waybar}"
+      "${pkgs.yakuake}"
+      "${pkgs.wlr-randr} --output eDP-1 --scale 1.3"
+    ];
   };
 }

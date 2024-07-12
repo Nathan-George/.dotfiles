@@ -129,7 +129,6 @@
   environment.systemPackages = with pkgs; [
 
     # labwc
-    wlr-randr
     alacritty
 
     # apps
