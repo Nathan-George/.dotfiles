@@ -4,6 +4,7 @@
 
   imports = [
     ./config/chrome.nix
+    ./config/labwc.nix
     ./config/lf.nix
     ./config/qimgv.nix
     ./config/waybar.nix
@@ -37,9 +38,6 @@
   nixpkgs.config.permittedInsecurePackages = [ 
     "electron-25.9.0" # obsidian needs this
   ];
-
-  programs.labwc.enable = true;
-  # programs.labwc.config.core.decoration = true;
 
   home.packages = with pkgs; [
     
