@@ -54,6 +54,8 @@
     grim
     slurp
 
+    swaybg
+
   ];
 
   # cursor
