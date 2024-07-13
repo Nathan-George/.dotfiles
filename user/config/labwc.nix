@@ -50,10 +50,10 @@
           { name="Execute"; command="amixer sset Master toggle"; }
         ];}
         { key="XF86_MonBrightnessUp"; actions = [
-          { name="Execute"; command="brightnessctl set +5%"; }
+          { name="Execute"; command="brightnessctl set 5%+"; }
         ];}
         { key="XF86_MonBrightnessDown"; actions = [
-          { name="Execute"; command="brightnessctl set -5%"; }
+          { name="Execute"; command="brightnessctl set 5%-"; }
         ];}
         { key="XF86_AudioPlay"; actions = [
           { name="Execute"; command="playerctl play-pause"; }
@@ -104,7 +104,7 @@
             fixedPosition = true;
           };
           actions = [
-            { name="MoveToEdge"; direction="up"; snapWindows="yes"; }
+            { name="MoveToEdge"; direction="up"; snapWindows="no"; }
           ];
         }
       ];
@@ -112,10 +112,10 @@
     };
 
     autostart = [
-      "${pkgs.swaybg} -i '${config.assets.wallpaper}'"
-      "${pkgs.waybar}"
-      "${pkgs.yakuake}"
-      "${pkgs.wlr-randr} --output eDP-1 --scale 1.3"
+      "${pkgs.swaybg}/bin/swaybg -i '${config.assets.wallpaper}'"
+      "${pkgs.waybar}/bin/waybar"
+      "${pkgs.yakuake}/bin/yakuake"
+      "${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --scale 1.3"
     ];
   };
 }

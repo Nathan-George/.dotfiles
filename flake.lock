@@ -22,10 +22,10 @@
     },
     "labwc-manager": {
       "locked": {
-        "dirtyRev": "dde25e8a529a5648134d36e6497a144a959738d3-dirty",
-        "dirtyShortRev": "dde25e8-dirty",
-        "lastModified": 1720753525,
-        "narHash": "sha256-fp+beo/jbAu66WxF2NIgvXyNj/rv57EauDMsWqUJ2oY=",
+        "dirtyRev": "7cdf5688214f9ada3efab3484e456f6cd81aea66-dirty",
+        "dirtyShortRev": "7cdf568-dirty",
+        "lastModified": 1720842858,
+        "narHash": "sha256-Tcl9JeVkaKLpx/3dFMIplxQKJEM0xqooTSiXFOJxwkA=",
         "type": "git",
         "url": "file:modules/labwc-manager"
       },
