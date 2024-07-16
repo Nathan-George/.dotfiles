@@ -54,6 +54,7 @@
     trashy
     grim
     slurp
+    wl-clipboard
 
   ];
 

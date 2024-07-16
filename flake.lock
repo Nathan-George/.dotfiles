@@ -22,10 +22,11 @@
     },
     "labwc-manager": {
       "locked": {
-        "dirtyRev": "7cdf5688214f9ada3efab3484e456f6cd81aea66-dirty",
-        "dirtyShortRev": "7cdf568-dirty",
-        "lastModified": 1720842858,
+        "lastModified": 1720891797,
         "narHash": "sha256-Tcl9JeVkaKLpx/3dFMIplxQKJEM0xqooTSiXFOJxwkA=",
+        "ref": "refs/heads/main",
+        "rev": "e51b491bc05c05a50ff4eaaf3611df9448417a43",
+        "revCount": 9,
         "type": "git",
         "url": "file:modules/labwc-manager"
       },
@@ -52,11 +53,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1720542800,
-        "narHash": "sha256-ZgnNHuKV6h2+fQ5LuqnUaqZey1Lqqt5dTUAiAnqH0QQ=",
+        "lastModified": 1720957393,
+        "narHash": "sha256-oedh2RwpjEa+TNxhg5Je9Ch6d3W1NKi7DbRO1ziHemA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "feb2849fdeb70028c70d73b848214b00d324a497",
+        "rev": "693bc46d169f5af9c992095736e82c3488bf7dbb",
         "type": "github"
       },
       "original": {

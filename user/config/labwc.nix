@@ -3,7 +3,18 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.labwc = {
+  programs.labwc = let
+    cliphist = "${pkgs.cliphist}/bin/cliphist";
+    wl-clip-persist = "${pkgs.wl-clip-persist}/bin/wl-clip-persist";
+    wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
+    wl-paste = "${pkgs.wl-clipboard}/bin/wl-paste";
+    rofi = "${pkgs.rofi}/bin/rofi";
+
+    clipboardHistoryScript = pkgs.writeShellScript "clipboardHistory" ''
+      ${cliphist} list | ${rofi} -dmenu -p 'clipboard' | ${cliphist} decode | ${wl-copy}
+    '';
+
+  in {
     enable = true;
 
     config = {
@@ -33,6 +44,9 @@
         ];}
         { key="A-Super_L"; actions = [
           { name="Execute"; command="applauncher.sh"; }
+        ];}
+        { key="W-v"; actions = [
+          { name="Execute"; command="${clipboardHistoryScript}"; }
         ];}
         { key="F12"; actions = [
           { name="Execute"; command="yakuake"; }
@@ -116,6 +130,11 @@
       "${pkgs.waybar}/bin/waybar"
       "${pkgs.yakuake}/bin/yakuake"
       "${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --scale 1.3"
+
+      # clipboard persistance
+      "${wl-clip-persist} --clipboard both"
+      "${wl-paste} --type text --watch '${cliphist} store'"
+      "${wl-paste} --type text --watch '${cliphist} store'"
     ];
   };
 }
