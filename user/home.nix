@@ -10,7 +10,6 @@
     ./config/qimgv.nix
     ./config/waybar.nix
     ./config/yakuake.nix
-    ./scripts
   ];
 
   home = rec {
@@ -52,8 +51,6 @@
 
     # utils
     trashy
-    grim
-    slurp
     wl-clipboard
 
   ];

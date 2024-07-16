@@ -4,14 +4,29 @@
 
 {
   programs.labwc = let
+
+    # packages
     cliphist = "${pkgs.cliphist}/bin/cliphist";
     wl-clip-persist = "${pkgs.wl-clip-persist}/bin/wl-clip-persist";
     wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
     wl-paste = "${pkgs.wl-clipboard}/bin/wl-paste";
     rofi = "${pkgs.rofi}/bin/rofi";
+    grim = "${pkgs.grim}/bin/grim";
+    slurp = "${pkgs.slurp}/bin/slurp";
 
-    clipboardHistoryScript = pkgs.writeShellScript "clipboardHistory" ''
+    # scripts
+    appLauncherScript = pkgs.writeShellScript "applauncher.sh" ''
+      if pgrep -x rofi; then
+        killall rofi
+      else
+        ${rofi} -show drun -show-icons
+      fi
+    '';
+    clipboardHistoryScript = pkgs.writeShellScript "clipboardhistory.sh" ''
       ${cliphist} list | ${rofi} -dmenu -p 'clipboard' | ${cliphist} decode | ${wl-copy}
+    '';
+    screenshotScript = pkgs.writeShellScript "screenshot.sh" ''
+      sh -c '${grim} -g "$(${slurp} -d)" "$HOME"/Pictures/screenshots/screenshot_"$(date +%Y%m%d_%Hh%Mm%Ss)".png'
     '';
 
   in {
@@ -43,7 +58,7 @@
           { name="Close"; }
         ];}
         { key="A-Super_L"; actions = [
-          { name="Execute"; command="applauncher.sh"; }
+          { name="Execute"; command="${appLauncherScript}"; }
         ];}
         { key="W-v"; actions = [
           { name="Execute"; command="${clipboardHistoryScript}"; }
@@ -79,9 +94,7 @@
           { name="Execute"; command="playerctl previous"; }
         ];}
         { key="Print"; actions = [
-          { 
-            name="Execute";
-            command="sh -c 'grim -g &quot;$(slurp -d)&quot; &quot;$HOME&quot;/Pictures/screenshots/screenshot_&quot;$(date +%Y%m%d_%Hh%Mm%Ss)&quot;.png&apos;"; }
+          { name="Execute"; command="${screenshotScript}"; }
         ];}
       ];
 
@@ -134,7 +147,7 @@
       # clipboard persistance
       "${wl-clip-persist} --clipboard both"
       "${wl-paste} --type text --watch '${cliphist} store'"
-      "${wl-paste} --type text --watch '${cliphist} store'"
+      "${wl-paste} --type image --watch '${cliphist} store'"
     ];
   };
 }
