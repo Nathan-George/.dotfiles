@@ -5,6 +5,7 @@
   imports = [
     ./assets
     ./config/chrome.nix
+    ./config/git.nix
     ./config/labwc.nix
     ./config/lf.nix
     ./config/qimgv.nix
@@ -20,13 +21,6 @@
 
   # enable home manager
   programs.home-manager.enable = true;
-
-  # git config
-  programs.git = {
-    enable = true;
-    userName = "JaydenPahukula";
-    userEmail = "jayden.pahukula@gmail.com";
-  };
 
   # enable bash
   programs.bash.enable = true;
