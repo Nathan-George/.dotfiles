@@ -13,6 +13,7 @@
     rofi = "${pkgs.rofi}/bin/rofi";
     grim = "${pkgs.grim}/bin/grim";
     slurp = "${pkgs.slurp}/bin/slurp";
+    amixer = "${pkgs.alsa-utils}/bin/amixer";
 
     # scripts
     appLauncherScript = pkgs.writeShellScript "applauncher.sh" ''
@@ -70,13 +71,13 @@
           { name="Execute"; command="yakuake"; }
         ];}
         { key="XF86_AudioLowerVolume"; actions = [
-          { name="Execute"; command="amixer sset Master 5%-"; }
+          { name="Execute"; command="${amixer} sset Master 5%-"; }
         ];}
         { key="XF86_AudioRaiseVolume"; actions = [
-          { name="Execute"; command="amixer sset Master 5%+"; }
+          { name="Execute"; command="${amixer} sset Master 5%+"; }
         ];}
         { key="XF86_AudioMute"; actions = [
-          { name="Execute"; command="amixer sset Master toggle"; }
+          { name="Execute"; command="${amixer} sset Master toggle"; }
         ];}
         { key="XF86_MonBrightnessUp"; actions = [
           { name="Execute"; command="brightnessctl set 5%+"; }
