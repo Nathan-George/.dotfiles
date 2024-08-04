@@ -14,6 +14,9 @@
     grim = "${pkgs.grim}/bin/grim";
     slurp = "${pkgs.slurp}/bin/slurp";
     amixer = "${pkgs.alsa-utils}/bin/amixer";
+    swayidle = "${pkgs.swayidle}/bin/swayidle";
+    swaylock = "${pkgs.swaylock-effects}/bin/swaylock";
+    wlopm = "${pkgs.wlopm}/bin/wlopm";
 
     # scripts
     appLauncherScript = pkgs.writeShellScript "applauncher.sh" ''
@@ -28,6 +31,13 @@
     '';
     screenshotScript = pkgs.writeShellScript "screenshot.sh" ''
       sh -c '${grim} -g "$(${slurp} -d)" "$HOME"/Pictures/screenshots/screenshot_"$(date +%Y%m%d_%Hh%Mm%Ss)".png'
+    '';
+    swayidleScript = pkgs.writeShellScript "swayidle.sh" ''
+      ${swayidle} -w \
+        timeout 300 '${swaylock} -f' \
+        timeout 600 '${wlopm} --off \*' \
+          resume '${wlopm} --on \*' \
+        timeout 1200 'systemctl suspend'
     '';
 
   in {
@@ -97,6 +107,9 @@
         { key="Print"; actions = [
           { name="Execute"; command="${screenshotScript}"; }
         ];}
+        { key="W-l"; actions = [
+          { name="Execute"; command="${swaylock} -f"; }
+        ];}
       ];
 
       mouse.scrollFactor = 0.5;
@@ -144,6 +157,7 @@
       "${pkgs.waybar}/bin/waybar"
       "${pkgs.yakuake}/bin/yakuake"
       "${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --scale 1.3"
+      "${swayidleScript}"
 
       # clipboard persistance
       "${wl-clip-persist} --clipboard both"

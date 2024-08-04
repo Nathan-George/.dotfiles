@@ -17,6 +17,7 @@ with lib; {
   # define assets
   config.assets = {
     wallpaper = ./wallpaper.png;
+    lockIcon = ./lock.png;
   };
 
 }

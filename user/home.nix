@@ -9,6 +9,7 @@
     ./config/labwc.nix
     ./config/lf.nix
     ./config/qimgv.nix
+    ./config/swaylock.nix
     ./config/waybar.nix
     ./config/yakuake.nix
   ];
