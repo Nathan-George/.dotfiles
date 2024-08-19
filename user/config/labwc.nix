@@ -160,6 +160,7 @@
       "${swayidleScript}"
 
       # clipboard persistance
+      "killall cliphist"
       "${wl-clip-persist} --clipboard both"
       "${wl-paste} --type text --watch ${cliphist} store"
       "${wl-paste} --type image --watch ${cliphist} store"
