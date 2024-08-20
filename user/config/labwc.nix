@@ -34,10 +34,10 @@
     '';
     swayidleScript = pkgs.writeShellScript "swayidle.sh" ''
       ${swayidle} -w \
-        timeout 900 '${swaylock} -f' \
-        timeout 1800 '${wlopm} --off \*' \
+        timeout 600 '${swaylock} -f' \
+        timeout 1200 '${wlopm} --off \*' \
           resume '${wlopm} --on \*' \
-        timeout 2700 'systemctl suspend'
+        timeout 1800 'systemctl suspend'
     '';
 
   in {
