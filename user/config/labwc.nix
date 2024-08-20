@@ -39,6 +39,10 @@
           resume '${wlopm} --on \*' \
         timeout 1800 'systemctl suspend'
     '';
+    screenLayoutScript = pkgs.writeShellScript "screenlayout.sh" ''
+      ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --pos 0,0 --scale 1.3 --output DP-6 --pos -1920,0
+      ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --pos 0,0 --scale 1.3
+    '';
 
   in {
     enable = true;
@@ -113,6 +117,9 @@
         { key="W-Up"; actions = [
           { name="ToggleMaximize"; }
         ];}
+        { key="W-S-m"; actions = [
+          { name="Execute"; command="${screenLayoutScript}"; }
+        ];}
       ];
 
       mouse.scrollFactor = 0.5;
@@ -159,7 +166,7 @@
       "${pkgs.swaybg}/bin/swaybg -i '${config.assets.wallpaper}'"
       "${pkgs.waybar}/bin/waybar"
       "${pkgs.yakuake}/bin/yakuake"
-      "${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --scale 1.3"
+      "${screenLayoutScript}"
       "${swayidleScript}"
 
       # clipboard persistance
