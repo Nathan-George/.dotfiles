@@ -72,7 +72,7 @@
         { key="A-F4"; actions = [
           { name="Close"; }
         ];}
-        { key="A-Super_L"; actions = [
+        { key="W-Space"; actions = [
           { name="Execute"; command="${appLauncherScript}"; }
         ];}
         { key="W-v"; actions = [
