@@ -84,28 +84,28 @@
         { key="XF86AudioMedia"; actions = [
           { name="Execute"; command="yakuake"; }
         ];}
-        { key="XF86_AudioLowerVolume"; actions = [
+        { key="XF86_AudioLowerVolume"; allowWhenLocked=true; actions = [
           { name="Execute"; command="${amixer} sset Master 5%-"; }
         ];}
-        { key="XF86_AudioRaiseVolume"; actions = [
+        { key="XF86_AudioRaiseVolume"; allowWhenLocked=true; actions = [
           { name="Execute"; command="${amixer} sset Master 5%+"; }
         ];}
-        { key="XF86_AudioMute"; actions = [
+        { key="XF86_AudioMute"; allowWhenLocked=true; actions = [
           { name="Execute"; command="${amixer} sset Master toggle"; }
         ];}
-        { key="XF86_MonBrightnessUp"; actions = [
+        { key="XF86_MonBrightnessUp"; allowWhenLocked=true; actions = [
           { name="Execute"; command="brightnessctl set 5%+"; }
         ];}
-        { key="XF86_MonBrightnessDown"; actions = [
+        { key="XF86_MonBrightnessDown"; allowWhenLocked=true; actions = [
           { name="Execute"; command="brightnessctl set 5%-"; }
         ];}
-        { key="XF86_AudioPlay"; actions = [
+        { key="XF86_AudioPlay"; allowWhenLocked=true; actions = [
           { name="Execute"; command="playerctl play-pause"; }
         ];}
-        { key="XF86_AudioNext"; actions = [
+        { key="XF86_AudioNext"; allowWhenLocked=true; actions = [
           { name="Execute"; command="playerctl next"; }
         ];}
-        { key="XF86_AudioPrev"; actions = [
+        { key="XF86_AudioPrev"; allowWhenLocked=true; actions = [
           { name="Execute"; command="playerctl previous"; }
         ];}
         { key="Print"; actions = [
