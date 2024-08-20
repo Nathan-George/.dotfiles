@@ -110,6 +110,9 @@
         { key="W-l"; actions = [
           { name="Execute"; command="${swaylock} -f"; }
         ];}
+        { key="W-Up"; actions = [
+          { name="ToggleMaximize"; }
+        ];}
       ];
 
       mouse.scrollFactor = 0.5;
@@ -160,7 +163,7 @@
       "${swayidleScript}"
 
       # clipboard persistance
-      "killall cliphist"
+      "killall wl-clip-persist"
       "${wl-clip-persist} --clipboard both"
       "${wl-paste} --type text --watch ${cliphist} store"
       "${wl-paste} --type image --watch ${cliphist} store"
