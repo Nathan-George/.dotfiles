@@ -32,20 +32,8 @@
       };
       "clock" = {
         "interval" = 1;
-        "format" = "{:%I:%M %p}";
-        "format-alt" = "{:%I:%M:%S %p}";
-        "tooltip-format" = "<big>{:%a %B %d %Y}</big>\n<small>{calendar}</small>";
-        "calendar" = {
-          "mode" = "month";
-          "on-scroll" = 1;
-          "on-click-right" = "mode";
-          "format" = {
-            "months" = "<span color='#ffead3'><b>{}</b></span>";
-            "days" = "<span color='#ecc6d9'><b>{}</b></span>";
-            "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
-            "today" = "<span color='#ff6699'><b><u>{}</u></b></span>";
-          };
-        };
+        "format" = " {:%I:%M %p  %a, %b %d}";
+        "tooltip-format" = "<big>{:%I:%M:%S}</big>";
       };
       "cpu" = {
         "format" = "CPU {usage}%";
