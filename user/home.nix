@@ -8,6 +8,7 @@
     ./config/git.nix
     ./config/labwc.nix
     ./config/lf.nix
+    ./config/mpv.nix
     ./config/qimgv.nix
     ./config/swaylock.nix
     ./config/waybar.nix
