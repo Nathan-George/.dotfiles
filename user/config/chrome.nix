@@ -7,6 +7,7 @@ let
     "application/pdf" "application/rdf+xml" "application/rss+xml" "application/xhtml+xml" "application/xhtml_xml" "application/xml"
     "image/gif" "image/jpeg" "image/png" "image/webp" "text/html" "text/xml" "x-scheme-handler/http" "x-scheme-handler/https"
   ];
+  exec = "${pkgs.google-chrome}/bin/google-chrome-stable --ozone-platform=wayland";
 in {
   # make sure package is installed
   home.packages = [ pkgs.google-chrome ];
@@ -16,18 +17,18 @@ in {
     name = "Google Chrome";
     genericName = "Web Browser";
     comment = "Access the Internet";
-    exec = "${pkgs.google-chrome}/bin/google-chrome-stable --ozone-platform=wayland %U";
+    exec = "${exec} %U";
     icon = "google-chrome";
     categories = [ "Network" "WebBrowser" ];
     mimeType = chromeMimeTypes;
     actions = {
       "new-window" = {
         name = "New Window";
-        exec = "${pkgs.google-chrome}/bin/google-chrome-stable --ozone-platform=wayland";
+        exec = "${exec}";
       };
       "new-private-window" = {
         name = "New Incognito Window";
-        exec = "${pkgs.google-chrome}/bin/google-chrome-stable --ozone-platform=wayland --incognito";
+        exec = "${exec} --incognito";
       };
     };
   };

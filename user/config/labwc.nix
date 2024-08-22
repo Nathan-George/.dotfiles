@@ -158,6 +158,12 @@
             { name="MoveToEdge"; direction="up"; snapWindows="no"; }
           ];
         }
+        {
+          criteria = { identifier="google-chrome"; };
+          properties = {
+            ignoreFocusRequest = false;
+          };
+        }
       ];
 
     };
