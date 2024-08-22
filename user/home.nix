@@ -8,6 +8,7 @@
     ./config/git.nix
     ./config/labwc.nix
     ./config/lf.nix
+    ./config/mako.nix
     ./config/mpv.nix
     ./config/qimgv.nix
     ./config/swaylock.nix
@@ -36,7 +37,7 @@
   ];
 
   home.packages = with pkgs; [
-    
+
     # apps
     beeper
     discord
