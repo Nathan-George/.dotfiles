@@ -10,7 +10,7 @@
     wl-clip-persist = "${pkgs.wl-clip-persist}/bin/wl-clip-persist";
     wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
     wl-paste = "${pkgs.wl-clipboard}/bin/wl-paste";
-    rofi = "${pkgs.rofi}/bin/rofi";
+    rofi = "${pkgs.rofi-wayland}/bin/rofi";
     grim = "${pkgs.grim}/bin/grim";
     slurp = "${pkgs.slurp}/bin/slurp";
     amixer = "${pkgs.alsa-utils}/bin/amixer";
