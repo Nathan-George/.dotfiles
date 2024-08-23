@@ -3,6 +3,12 @@
 { config, lib, pkgs, ... }:
 
 {
+
+  home.packages = with pkgs; [
+    alsa-utils
+    wlr-randr
+  ];
+
   programs.labwc = let
 
     # packages
@@ -40,7 +46,8 @@
         timeout 1800 'systemctl suspend'
     '';
     screenLayoutScript = pkgs.writeShellScript "screenlayout.sh" ''
-      ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --pos 0,0 --scale 1.3 --output DP-6 --pos -1920,0
+      ${pkgs.wlr-randr}/bin/wlr-randr --output DP-6 --pos -1920,0
+      ${pkgs.wlr-randr}/bin/wlr-randr --output DP-7 --pos -1920,0
       ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --pos 0,0 --scale 1.3
     '';
 
