@@ -150,7 +150,7 @@
     home-manager
 
   ];
-  
+
   # enable git
   programs.git.enable = true;
 
