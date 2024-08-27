@@ -35,7 +35,7 @@
     };
 
     commands = {
-      zip = "%${pkgs.zip}/bin/zip -r \"$f.zip\" \"$f\"";
+      zip = "%${pkgs.zip}/bin/zip -rj \"$f.zip\" \"$f\"";
       unzip = ''''${{
         case "$f" in
           *.zip) ${pkgs.unzip}/bin/unzip "$f" ;;
