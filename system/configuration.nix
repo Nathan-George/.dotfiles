@@ -88,7 +88,7 @@
   users.users.jayden = {
     isNormalUser = true;
     description = "Jayden";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "wireshark" ];
   };
 
   # enable labwc
@@ -132,6 +132,7 @@
 
     # apps
     google-chrome
+    wireshark
 
     # utils
     brightnessctl
@@ -178,5 +179,7 @@
     pypy = "pypy3";
     py = "python";
   };
+
+  programs.wireshark.enable = true;
 
 }
