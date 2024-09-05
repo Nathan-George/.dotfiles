@@ -10,6 +10,7 @@
     extraConfig = {
       format.pretty = "oneline";
       log.abbrevCommit = true;
+      pull.rebase = true;
     };
   };
 }
