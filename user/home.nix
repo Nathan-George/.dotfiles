@@ -6,6 +6,7 @@
     ./assets
     ./config/chrome.nix
     ./config/git.nix
+    ./config/plasma.nix
     # ./config/waybar.nix
     ./config/yakuake.nix
   ];

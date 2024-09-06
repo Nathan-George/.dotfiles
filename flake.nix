@@ -5,13 +5,21 @@
     # nix packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # home manager
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # plasma manager
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     # hardware specific configuration
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, labwc-manager, ... }:
+  outputs = { nixpkgs, home-manager, nixos-hardware, plasma-manager, ... }:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -33,7 +41,7 @@
       jayden = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          labwc-manager.homeManagerModule
+          plasma-manager.homeManagerModules.plasma-manager
           ./user/home.nix
         ];
       };

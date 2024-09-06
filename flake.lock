@@ -20,21 +20,6 @@
         "type": "github"
       }
     },
-    "labwc-manager": {
-      "locked": {
-        "lastModified": 1724129362,
-        "narHash": "sha256-dtqV3txprAESWOaHEVggm3QTXA9a8r9S6Cmxm1HAj44=",
-        "ref": "refs/heads/main",
-        "rev": "c599258fb02688f1a7863884d9c1a78652527c94",
-        "revCount": 11,
-        "type": "git",
-        "url": "file:modules/labwc-manager"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:modules/labwc-manager"
-      }
-    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1725477728,
@@ -67,12 +52,35 @@
         "type": "github"
       }
     },
+    "plasma-manager": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1725575977,
+        "narHash": "sha256-1e9zB0dMRwdAbhxVATlL25rExMDh4gZ/3AXdkpU8408=",
+        "owner": "nix-community",
+        "repo": "plasma-manager",
+        "rev": "b82b9ba85c156a5e7f865cc94ed2a4df20cbbf39",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "plasma-manager",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "labwc-manager": "labwc-manager",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "plasma-manager": "plasma-manager"
       }
     }
   },
