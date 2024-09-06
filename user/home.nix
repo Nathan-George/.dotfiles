@@ -6,13 +6,7 @@
     ./assets
     ./config/chrome.nix
     ./config/git.nix
-    ./config/labwc.nix
-    ./config/lf.nix
-    ./config/mako.nix
-    ./config/mpv.nix
-    ./config/qimgv.nix
-    ./config/swaylock.nix
-    ./config/waybar.nix
+    # ./config/waybar.nix
     ./config/yakuake.nix
   ];
 

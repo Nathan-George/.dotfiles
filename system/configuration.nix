@@ -91,29 +91,17 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "wireshark" ];
   };
 
-  # enable labwc
-  programs.labwc.enable = true;
-  programs.xwayland.enable = true;
+  # sddm
+  services.displayManager = {
+    sddm.enable = true;
+    defaultSession = "plasma";
+  };
 
-  # greetd
-  services.greetd = {
-    enable = true;
-    settings={
-      default_session={
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --user-menu -rti --asterisks --cmd 'labwc'";
-        user = "greeter";
-      };
-    };
-  };
-  # needed for greetd
-  systemd.services.greetd.serviceConfig = {
-    Type = "idle";
-    StandardInput = "tty";
-    StandardOutput = "tty";
-    StandardError = "journal";
-    TTYVHangup = true;
-    TTYVTDisallocate = true;
-  };
+  # kde plasma
+  services.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    oxygen
+  ];
 
   # disable network wait service
   systemd.services.NetworkManager-wait-online.enable = false;
