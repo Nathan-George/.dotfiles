@@ -9,10 +9,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # hardware specific configuration
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    # labwc-manager
-    labwc-manager = {
-      url = "git+file:modules/labwc-manager";
-    };
   };
 
   outputs = { self, nixpkgs, home-manager, nixos-hardware, labwc-manager, ... }:

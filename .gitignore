@@ -1,4 +1,1 @@
 *.code-workspace
-
-# labwc-manager is another git repo, ignore it
-modules/labwc-manager/
