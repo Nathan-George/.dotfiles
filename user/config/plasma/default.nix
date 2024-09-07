@@ -4,6 +4,7 @@
 
 {
   imports = [
+    ./display.nix
     ./input.nix
     ./panels.nix
   ];
