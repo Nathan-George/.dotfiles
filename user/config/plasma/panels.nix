@@ -43,6 +43,7 @@
                 "Yakuake"
                 "org.kde.plasma.volume"
                 "org.kde.plasma.brightness"
+                "org.kde.plasma.mediacontroller"
                 "org.kde.kscreen"
                 "org.kde.plasma.keyboardindicator"
                 "chrome_status_icon_1"
