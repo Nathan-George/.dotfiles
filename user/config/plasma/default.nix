@@ -1,8 +1,12 @@
-# plasma config
+# plasma config entrypoint
 
 { pkgs, ... }:
 
 {
+  imports = [
+    ./input.nix
+  ];
+
   programs.plasma = {
     enable = true;
     overrideConfig = true;
@@ -16,16 +20,5 @@
         output.2.position.-1920,0 \
     '';
 
-    input.mice = [
-      {
-        acceleration = -0.2;
-        accelerationProfile = "none";
-        enable = true;
-        name = "Razer Razer DeathAdder Essential";
-        naturalScroll = false;
-        productId = "006e";
-        vendorId = "1532";
-      }
-    ];
   };
 }
