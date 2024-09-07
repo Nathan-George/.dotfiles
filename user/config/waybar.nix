@@ -7,6 +7,9 @@
   # install font awesome
   home.packages = [ pkgs.font-awesome ];
 
+  # start on boot
+  programs.plasma.startup.startupScript."waybar".text = "waybar";
+
   # config
   programs.waybar = {
     enable = true;

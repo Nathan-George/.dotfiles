@@ -5,6 +5,7 @@
 {
   imports = [
     ./input.nix
+    ./panels.nix
   ];
 
   programs.plasma = {

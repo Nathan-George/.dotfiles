@@ -7,7 +7,7 @@
     ./config/chrome.nix
     ./config/git.nix
     ./config/plasma
-    # ./config/waybar.nix
+    ./config/waybar.nix
     ./config/yakuake.nix
   ];
 
@@ -27,7 +27,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # allow certain insecure packages
-  nixpkgs.config.permittedInsecurePackages = [ 
+  nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0" # obsidian needs this
   ];
 
