@@ -7,7 +7,6 @@
 
   home.packages = [
     pkgs.yakuake # install yakuake
-    (import ./yakuake-session.nix { inherit pkgs; }) # create yakuake-session script
   ];
 
   # override default desktop entry
@@ -27,25 +26,18 @@
 
   # make yakuake the default terminal
   home.sessionVariables = {
-    TERMINAL = "yakuake-session";
+    TERMINAL = "yakuake";
   };
 
-  # start yakuake on boot (there has got to be a better way to do this)
-  xdg.configFile."autostart/org.kde.yakuake.desktop".text = ''
-    [Desktop Entry]
-    Comment=A drop-down terminal emulator based on KDE Konsole technology.
-    DBusActivatable=true
-    Exec=yakuake
-    GenericName=Drop-down Terminal
-    Icon=yakuake
-    Name=Yakuake
-    StartupNotify=false
-    Terminal=false
-    Type=Application
-    Version=1.4
-    X-DBUS-ServiceName=org.kde.yakuake
-    X-DBUS-StartupType=Unique
-  '';
+  # start yakuake on boot
+  programs.plasma.startup.startupScript."yakuake".text = "yakuake";
+
+  # keybinds
+  programs.plasma.hotkeys.commands."yakuake" = {
+    name = "yakuake";
+    keys = [ "F12" "Launch Media" ];
+    command = "yakuake";
+  };
 
   # config file
   xdg.configFile."yakuakerc".text = ''
