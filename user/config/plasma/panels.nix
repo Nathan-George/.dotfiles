@@ -6,7 +6,7 @@
 {
   programs.plasma.panels = [
     {
-      floating = false;
+      floating = true;
       height = 24;
       hiding = "none";
       lengthMode = "fill";

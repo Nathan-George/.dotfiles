@@ -7,6 +7,7 @@
     ./display.nix
     ./input.nix
     ./panels.nix
+    ./theme.nix
   ];
 
   programs.plasma = {

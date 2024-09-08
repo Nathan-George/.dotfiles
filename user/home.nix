@@ -46,12 +46,6 @@
 
   ];
 
-  # cursor
-  home.pointerCursor = {
-    name = "Hackneyed";
-    package = pkgs.hackneyed;
-  };
-
   # for mounting flash drives
   programs.bashmount.enable = true;
 
