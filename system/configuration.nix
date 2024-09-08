@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./thunar.nix
   ];
 
   # bootloader
@@ -29,7 +30,7 @@
 
   # enable X11 windowing system
   services.xserver.enable = true;
-  
+
   # desktop portals
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -55,7 +56,7 @@
   # enable fingerprint
   services.fprintd.enable = true;
 
-  # enable flakes 
+  # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # time zone
