@@ -7,6 +7,7 @@
     ./display.nix
     ./input.nix
     ./panels.nix
+    ./shortcuts.nix
     ./theme.nix
   ];
 
