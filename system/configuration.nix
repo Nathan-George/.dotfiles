@@ -130,7 +130,8 @@
     neofetch
     playerctl
     pypy3
-    python3
+    python312
+    python312Packages.pip
     unzip
     vim
     wget
