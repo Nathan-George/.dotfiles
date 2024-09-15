@@ -129,9 +129,7 @@
     killall
     neofetch
     playerctl
-    pypy3
     python312
-    python312Packages.pip
     unzip
     vim
     wget
@@ -162,12 +160,6 @@
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME   = "$HOME/.local/share";
     XDG_STATE_HOME  = "$HOME/.local/state";
-  };
-
-  # shell aliases
-  environment.shellAliases = {
-    pypy = "pypy3";
-    py = "python";
   };
 
   programs.wireshark.enable = true;
