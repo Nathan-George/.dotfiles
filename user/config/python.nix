@@ -4,7 +4,7 @@
 
 {
   # specify packages
-  home.packages = [
+  home.packages = with pkgs; [
     pypy3
     # python312 <-- already installed globally
   ];

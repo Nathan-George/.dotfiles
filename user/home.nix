@@ -8,6 +8,7 @@
     ./config/git.nix
     ./config/lf.nix
     ./config/plasma
+    ./config/python.nix
     ./config/waybar.nix
     ./config/yakuake.nix
   ];
