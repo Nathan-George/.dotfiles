@@ -27,6 +27,7 @@
 
     settings = {
       preview = true;
+      dirfirst = false;
       drawbox = true;
       icons = true;
       ignorecase = true;
@@ -62,7 +63,7 @@
         read ans
         $EDITOR $ans
       }}'';
-      trash = "%${pkgs.trashy}/bin/trash $fx";
+      trash = "%${pkgs.trashy}/bin/trash \"$f\"";
       untrash = "%${pkgs.trashy}/bin/trash restore --force -r 0";
     };
 
