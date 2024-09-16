@@ -9,6 +9,7 @@
     ./config/lf.nix
     ./config/plasma
     ./config/python.nix
+    ./config/trashy.nix
     ./config/waybar.nix
     ./config/yakuake.nix
   ];
@@ -44,7 +45,6 @@
     vscode
 
     # utils
-    trashy
     wl-clipboard
 
   ];
