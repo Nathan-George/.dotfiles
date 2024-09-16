@@ -25,6 +25,10 @@
   };
 
   # make yakuake the default terminal
+  programs.plasma.configFile."kdeglobals"."General" = {
+    "TerminalApplication" = "yakuake-session";
+    "TerminalService" = "org.kde.yakuake.desktop";
+  };
   home.sessionVariables = {
     TERMINAL = "yakuake";
   };
