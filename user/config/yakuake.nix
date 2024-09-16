@@ -7,6 +7,7 @@
 
   home.packages = [
     pkgs.yakuake # install yakuake
+    (import ./yakuake-session.nix { inherit pkgs; }) # create yakuake-session script
   ];
 
   # override default desktop entry
