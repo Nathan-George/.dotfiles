@@ -18,9 +18,9 @@
         idleTimeOut = 1440; # 24 mins
       };
       powerButtonAction = "showLogoutScreen";
-      whenLaptopLidClosed = "hibernate";
+      whenLaptopLidClosed = "sleep";
       inhibitLidActionWhenExternalMonitorConnected = false;
-      whenSleepingEnter = "hybridSleep";
+      whenSleepingEnter = "standbyThenHibernate";
     };
     battery = {
       autoSuspend = {
@@ -36,9 +36,9 @@
         idleTimeOut = 540; # 9 mins
       };
       powerButtonAction = "showLogoutScreen";
-      whenLaptopLidClosed = "hibernate";
+      whenLaptopLidClosed = "sleep";
       inhibitLidActionWhenExternalMonitorConnected = false;
-      whenSleepingEnter = "hybridSleep";
+      whenSleepingEnter = "standbyThenHibernate";
     };
     # same config for low battery
     lowBattery = battery;
