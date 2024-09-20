@@ -20,7 +20,6 @@
       powerButtonAction = "showLogoutScreen";
       whenLaptopLidClosed = "sleep";
       inhibitLidActionWhenExternalMonitorConnected = false;
-      whenSleepingEnter = "standbyThenHibernate";
     };
     battery = {
       autoSuspend = {
@@ -38,7 +37,6 @@
       powerButtonAction = "showLogoutScreen";
       whenLaptopLidClosed = "sleep";
       inhibitLidActionWhenExternalMonitorConnected = false;
-      whenSleepingEnter = "standbyThenHibernate";
     };
     # same config for low battery
     lowBattery = battery;
