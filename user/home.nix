@@ -47,6 +47,9 @@
     # utils
     wl-clipboard
 
+    # games
+    prismlauncher
+
   ];
 
   # for mounting flash drives
