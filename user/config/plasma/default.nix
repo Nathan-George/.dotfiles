@@ -7,6 +7,7 @@
     ./display.nix
     ./input.nix
     ./kscreenlocker.nix
+    ./kwin.nix
     ./panels.nix
     ./powerdevil.nix
     ./shortcuts.nix
