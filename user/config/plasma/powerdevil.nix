@@ -15,7 +15,7 @@
       };
       dimDisplay = {
         enable = true;
-        idleTimeOut = 1440; # 24 mins
+        idleTimeout = 1440; # 24 mins
       };
       powerButtonAction = "showLogoutScreen";
       whenLaptopLidClosed = "sleep";
@@ -32,7 +32,7 @@
       };
       dimDisplay = {
         enable = true;
-        idleTimeOut = 540; # 9 mins
+        idleTimeout = 540; # 9 mins
       };
       powerButtonAction = "showLogoutScreen";
       whenLaptopLidClosed = "sleep";
