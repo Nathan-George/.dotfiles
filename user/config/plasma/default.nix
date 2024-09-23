@@ -10,6 +10,7 @@
     ./panels.nix
     ./powerdevil.nix
     ./shortcuts.nix
+    ./taskswitcher.nix
     ./theme.nix
   ];
 
