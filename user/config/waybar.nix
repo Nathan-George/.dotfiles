@@ -54,7 +54,7 @@
         "format-full" = "{capacity}% {icon}";
         "format-charging" = "{capacity}% ";
         "format-plugged" = "{capacity}% ";
-        "format-alt" = "{time} {icon}";
+        "format-tooltip" = "Time to empty: {time}";
         "format-icons" = ["" "" "" "" ""];
       };
       "network" = {
@@ -62,11 +62,7 @@
         "format-ethernet" = "{ipaddr}/{cidr} ";
         "format-linked" = "{ifname} (No IP) ";
         "format-disconnected" = "Disconnected ⚠";
-        "tooltip-format" = "IP = {ipaddr}/{cidr}\nOn = {ifname} via {gwaddr}";
-      };
-      "custom/spacer" = {
-        "format" = " ";
-        "tooltip" = false;
+        "tooltip-format" = "IP = {ipaddr}/{cidr}\nOn {ifname} via {gwaddr}";
       };
     };
 
