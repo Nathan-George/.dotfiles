@@ -35,7 +35,10 @@
   };
 
   # start yakuake on boot
-  programs.plasma.startup.startupScript."yakuake".text = "yakuake &";
+  programs.plasma.startup.startupScript."yakuake" = {
+    runAlways = true;
+    text = "yakuake &";
+  };
 
   # keybinds
   programs.plasma.hotkeys.commands."yakuake" = {

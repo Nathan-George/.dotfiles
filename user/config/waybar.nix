@@ -8,7 +8,10 @@
   home.packages = [ pkgs.font-awesome ];
 
   # start on boot
-  programs.plasma.startup.startupScript."waybar".text = "waybar &";
+  programs.plasma.startup.startupScript."waybar" = {
+    runAlways = true;
+    text = "waybar &";
+  };
 
   # config
   programs.waybar = {
