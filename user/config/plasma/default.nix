@@ -6,6 +6,7 @@
   imports = [
     ./display.nix
     ./input.nix
+    ./klipper.nix
     ./krunner.nix
     ./kscreenlocker.nix
     ./kwin.nix
