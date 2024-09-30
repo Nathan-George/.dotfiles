@@ -43,7 +43,6 @@
     obsidian
     spotify
     vscode
-    zoom-us
 
     # utils
     wl-clipboard
