@@ -13,6 +13,7 @@
     ./panels.nix
     ./powerdevil.nix
     ./shortcuts.nix
+    ./spectacle.nix
     ./taskswitcher.nix
     ./theme.nix
   ];
