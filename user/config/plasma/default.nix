@@ -9,6 +9,7 @@
     ./klipper.nix
     ./krunner.nix
     ./kscreenlocker.nix
+    ./kwallet.nix
     ./kwin.nix
     ./panels.nix
     ./powerdevil.nix
