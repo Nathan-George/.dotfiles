@@ -47,8 +47,12 @@
     # utils
     wl-clipboard
 
+    # global fonts
+    nerdfonts
+
     # games
     prismlauncher
+    smassh
 
   ];
 
