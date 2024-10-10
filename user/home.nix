@@ -5,6 +5,7 @@
   imports = [
     ./assets
     ./config/chrome.nix
+    ./config/fonts.nix
     ./config/git.nix
     ./config/lf.nix
     ./config/plasma
@@ -46,9 +47,6 @@
 
     # utils
     wl-clipboard
-
-    # global fonts
-    nerdfonts
 
     # games
     prismlauncher
