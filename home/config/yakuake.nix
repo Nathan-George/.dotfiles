@@ -102,7 +102,7 @@
   # konsole profile
   xdg.dataFile."konsole/yakuake.profile".text = ''
     [Appearance]
-    Font=DejaVuSansM Nerd Font Mono,10,-1,5,50,0,0,0,0,0
+    Font=DejaVuSans Nerd Font,10,-1,5,50,0,0,0,0,0
 
     [General]
     Name=yakuake
