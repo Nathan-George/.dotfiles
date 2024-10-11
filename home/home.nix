@@ -54,7 +54,4 @@
 
   ];
 
-  # for mounting flash drives
-  programs.bashmount.enable = true;
-
 }
