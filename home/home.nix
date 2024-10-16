@@ -5,6 +5,7 @@
   imports = [
     ./assets
     ./config/chrome.nix
+    ./config/colors.nix
     ./config/fonts.nix
     ./config/git.nix
     ./config/lf.nix
@@ -14,6 +15,7 @@
     ./config/trashy.nix
     ./config/waybar.nix
     ./config/yakuake.nix
+    ./modules
   ];
 
   home = rec {

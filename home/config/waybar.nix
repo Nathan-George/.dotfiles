@@ -50,7 +50,7 @@
       };
       "battery" = {
         "states" = {
-          "warning" = 20;
+          "warning" = 30;
           "critical" = 10;
         };
         "format" = "{capacity}% {icon}";
@@ -69,14 +69,14 @@
       };
     };
 
-    style = with config; ''
+    style = with config.colors; ''
       * {
         font-family: FontAwesome, monospace;
         font-size: 13px;
       }
       window#waybar {
-        background-color: #161616;
-        color: #F5F5F5;
+        background-color: #${base00};
+        color: #${base07};
         transition-property: background-color;
         transition-duration: .5s;
       }
@@ -89,18 +89,6 @@
       button:hover {
         background: inherit;
       }
-      #workspaces button {
-        padding: 0 5px;
-        background-color: transparent;
-        color: #F5F5F5;
-      }
-      #workspaces button:hover {
-        background: rgba(0, 0, 0, 0.8);
-        box-shadow: inset 0 -3px #F5F5F5;
-      }
-      #workspaces button.urgent {
-        background-color: #FB4934;
-      }
       #window, #workspaces {
         margin: 0 4px;
       }
@@ -108,13 +96,13 @@
         padding: 0 10px;
       }
       #battery.charging, #battery.plugged {
-        color: #7EBB26;
+        color: #${base0B};
       }
       #battery.warning {
-        color: #FAD32F;
+        color: #${base0A};
       }
       #battery.critical, #idle_inhibitor.activated, #network.disconnected {
-        color: #FB4934;
+        color: #${base08};
       }
     '';
   };
