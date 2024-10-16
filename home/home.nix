@@ -8,8 +8,9 @@
     ./config/fonts.nix
     ./config/git.nix
     ./config/lf.nix
+    ./config/mako.nix
     ./config/plasma
-    ./config/python.nix
+    ./config/python.nix 
     ./config/trashy.nix
     ./config/waybar.nix
     ./config/yakuake.nix
@@ -47,6 +48,7 @@
 
     # utils
     wl-clipboard
+    libnotify
 
     # games
     prismlauncher
