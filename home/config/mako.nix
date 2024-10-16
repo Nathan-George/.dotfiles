@@ -13,4 +13,10 @@
       text-color=#${base07}
     '';
   };
+
+  # start on boot
+  programs.plasma.startup.startupScript."mako" = {
+    runAlways = true;
+    text = "mako &";
+  };
 }
