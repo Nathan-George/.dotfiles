@@ -115,9 +115,6 @@
   # system packages
   environment.systemPackages = with pkgs; [
 
-    # labwc
-    alacritty
-
     # apps
     google-chrome
     wireshark
