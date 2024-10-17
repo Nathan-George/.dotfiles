@@ -17,9 +17,11 @@
     };
     # hardware specific configuration
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # nix colors
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { nixpkgs, home-manager, nixos-hardware, plasma-manager, ... }:
+  outputs = { nixpkgs, home-manager, nixos-hardware, plasma-manager, nix-colors, ... }:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -44,6 +46,7 @@
           plasma-manager.homeManagerModules.plasma-manager
           ./home/home.nix
         ];
+        extraSpecialArgs = { inherit nix-colors; };
       };
     };
 

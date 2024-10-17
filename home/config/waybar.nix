@@ -69,7 +69,7 @@
       };
     };
 
-    style = with config.colors; ''
+    style = with config.colorScheme.palette; ''
       * {
         font-family: FontAwesome, monospace;
         font-size: 13px;
