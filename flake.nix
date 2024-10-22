@@ -45,6 +45,7 @@
         modules = [
           plasma-manager.homeManagerModules.plasma-manager
           ./home/home.nix
+          ./home/modules
         ];
         extraSpecialArgs = { inherit nix-colors; };
       };

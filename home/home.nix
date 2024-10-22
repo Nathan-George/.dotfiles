@@ -15,7 +15,6 @@
     ./config/trashy.nix
     ./config/waybar.nix
     ./config/yakuake.nix
-    ./modules
     ./scripts
   ];
 
