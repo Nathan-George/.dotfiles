@@ -111,49 +111,38 @@
   '';
 
   # color scheme
-  # TODO integrate with colors module
   programs.plasma.dataFile."konsole/yakuake.colorscheme" = let 
     fmt = nix-colors.lib.conversions.hexToRGBString ",";
   in with config.colorScheme.palette; {
     # background
     Background.Color = fmt base01;
-    BackgroundFaint.Color = fmt base01;
     BackgroundIntense.Color = fmt base01;
     # black
     Color0.Color = fmt base01;
-    Color0Faint.Color = fmt base00;
     Color0Intense.Color = fmt base02;
     # red
     Color1.Color = fmt base08;
-    Color1Faint.Color = fmt base18;
     Color1Intense.Color = fmt base10;
     # green
     Color2.Color = fmt base0B;
-    Color2Faint.Color = fmt base1B;
     Color2Intense.Color = fmt base13;
     # yellow
     Color3.Color = fmt base0A;
-    Color3Faint.Color = fmt base1A;
     Color3Intense.Color = fmt base12;
     # blue
     Color4.Color = fmt base0D;
-    Color4Faint.Color = fmt base1D;
     Color4Intense.Color = fmt base15;
     # purple
     Color5.Color = fmt base0E;
-    Color5Faint.Color = fmt base1E;
     Color5Intense.Color = fmt base16;
     # cyan
     Color6.Color = fmt base0C;
-    Color6Faint.Color = fmt base1C;
     Color6Intense.Color = fmt base14;
     # white
     Color7.Color = fmt base06;
-    Color7Faint.Color = fmt base05;
     Color7Intense.Color = fmt base07;
     # foreground
     Foreground.Color = fmt base06;
-    ForegroundFaint.Color = fmt base06;
     ForegroundIntense.Color = fmt base06;
 
     General = {
