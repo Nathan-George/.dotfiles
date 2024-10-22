@@ -16,6 +16,7 @@
     ./config/waybar.nix
     ./config/yakuake.nix
     ./modules
+    ./scripts
   ];
 
   home = rec {

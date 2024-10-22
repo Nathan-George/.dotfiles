@@ -3,9 +3,10 @@
 { config, lib, pkgs, ... }:
 
 {
-
-  # install font awesome
-  home.packages = [ pkgs.font-awesome ];
+  # nerd font
+  home.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "Hack" ]; })
+  ];
 
   # start on boot
   programs.plasma.startup.startupScript."waybar" = {
@@ -21,12 +22,22 @@
       layer = "top";
       position = "top";
       height = 24;
-      spacing = 4;
-      modules-left = [];
+      spacing = 20;
+      modules-left = [ "custom/nixlogo" "clock" ];
       modules-center = [];
-      modules-right = [ "idle_inhibitor" "network" "memory" "cpu" "battery" "clock" ];
+      modules-right = [ "idle_inhibitor" "network" "memory" "cpu" "battery" ];
 
       # modules
+      "custom/nixlogo" = {
+        "format" = "  ";
+        "tooltip" = false;
+        "on-click" = ". ${config.scripts.logoutPrompt}";
+      };
+      "clock" = {
+        "interval" = 1;
+        "format" = "{:%I:%M %p %a, %b %d}";
+        "tooltip-format" = "<big>{:%I:%M:%S}</big>";
+      };
       "idle_inhibitor" = {
         "format" = "{icon}";
         "format-icons" = {
@@ -36,17 +47,19 @@
         "tooltip-format-activated" = "Idle inhibitor: on";
         "tooltip-format-deactivated" = "Idle inhibitor: off";
       };
-      "clock" = {
-        "interval" = 1;
-        "format" = " {:%I:%M %p  %a, %b %d}";
-        "tooltip-format" = "<big>{:%I:%M:%S}</big>";
+      "network" = {
+        "format-wifi" = "{essid} ({signalStrength}%) ";
+        "format-ethernet" = "{ipaddr}/{cidr} ";
+        "format-linked" = "{ifname} (No IP) ";
+        "format-disconnected" = "Disconnected ⚠";
+        "tooltip-format" = "IP = {ipaddr}/{cidr}\nOn {ifname} via {gwaddr}";
+      };
+      "memory" = {
+        "format" = "Mem {}%";
       };
       "cpu" = {
         "format" = "CPU {usage}%";
         "tooltip" = true;
-      };
-      "memory" = {
-        "format" = "Mem {}%";
       };
       "battery" = {
         "states" = {
@@ -60,19 +73,14 @@
         "format-tooltip" = "Time to empty: {time}";
         "format-icons" = ["" "" "" "" ""];
       };
-      "network" = {
-        "format-wifi" = "{essid} ({signalStrength}%) ";
-        "format-ethernet" = "{ipaddr}/{cidr} ";
-        "format-linked" = "{ifname} (No IP) ";
-        "format-disconnected" = "Disconnected ⚠";
-        "tooltip-format" = "IP = {ipaddr}/{cidr}\nOn {ifname} via {gwaddr}";
-      };
     };
 
     style = with config.colorScheme.palette; ''
       * {
-        font-family: FontAwesome, monospace;
+        font-family: Hack Nerd Font Propo, monospace;
         font-size: 13px;
+        padding: 0;
+        margin: 0;
       }
       window#waybar {
         background-color: #${base00};
@@ -81,7 +89,6 @@
         transition-duration: .5s;
       }
       button {
-        box-shadow: inset 0 -3px transparent;
         border: none;
         border-radius: 0;
       }
@@ -89,11 +96,11 @@
       button:hover {
         background: inherit;
       }
-      #window, #workspaces {
-        margin: 0 4px;
+      .modules-right {
+        padding-right: 12px;
       }
-      #clock, #battery, #cpu, #memory, #network, #idle_inhibitor {
-        padding: 0 10px;
+      #custom-nixlogo {
+        font-size: 15px;
       }
       #battery.charging, #battery.plugged {
         color: #${base0B};
