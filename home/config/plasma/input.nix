@@ -1,10 +1,6 @@
 # plasma-manager input module
-
-{ ... }:
-
-{
+{...}: {
   programs.plasma.input = let
-
     # for consistent touchpad config between 'mice' and 'touchpads' options
     touchpad = rec {
       acceleration = pointerSpeed;
@@ -23,7 +19,6 @@
       twoFingerTap = "rightClick";
       vendorId = "093a";
     };
-
   in {
     mice = [
       {
@@ -36,12 +31,36 @@
         vendorId = "1532";
       }
       {
-        inherit (touchpad) acceleration accelerationProfile enable name naturalScroll productId scrollSpeed vendorId;
+        inherit
+          (touchpad)
+          acceleration
+          accelerationProfile
+          enable
+          name
+          naturalScroll
+          productId
+          scrollSpeed
+          vendorId
+          ;
       }
     ];
     touchpads = [
       {
-        inherit (touchpad) disableWhileTyping enable name naturalScroll pointerSpeed productId rightClickMethod scrollMethod tapAndDrag tapToClick twoFingerTap vendorId;
+        inherit
+          (touchpad)
+          disableWhileTyping
+          enable
+          name
+          naturalScroll
+          pointerSpeed
+          productId
+          rightClickMethod
+          scrollMethod
+          tapAndDrag
+          tapToClick
+          twoFingerTap
+          vendorId
+          ;
       }
     ];
   };

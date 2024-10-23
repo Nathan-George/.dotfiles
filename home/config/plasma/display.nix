@@ -1,8 +1,5 @@
 # plasma startup script for setting up displays
-
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.plasma.startup.startupScript."displaySetup" = {
     runAlways = true;
     text = let

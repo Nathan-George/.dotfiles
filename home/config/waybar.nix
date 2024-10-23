@@ -1,12 +1,12 @@
 # waybar config
-
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   # nerd font
-  home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" ]; })
-  ];
+  home.packages = with pkgs; [(nerdfonts.override {fonts = ["Hack"];})];
 
   # start on boot
   programs.plasma.startup.startupScript."waybar" = {
@@ -23,9 +23,18 @@
       position = "top";
       height = 24;
       spacing = 20;
-      modules-left = [ "custom/nixlogo" "clock" ];
+      modules-left = [
+        "custom/nixlogo"
+        "clock"
+      ];
       modules-center = [];
-      modules-right = [ "idle_inhibitor" "network" "memory" "cpu" "battery" ];
+      modules-right = [
+        "idle_inhibitor"
+        "network"
+        "memory"
+        "cpu"
+        "battery"
+      ];
 
       # modules
       "custom/nixlogo" = {
@@ -71,7 +80,13 @@
         "format-charging" = "{capacity}% ";
         "format-plugged" = "{capacity}% ";
         "format-tooltip" = "Time to empty: {time}";
-        "format-icons" = ["" "" "" "" ""];
+        "format-icons" = [
+          ""
+          ""
+          ""
+          ""
+          ""
+        ];
       };
     };
 

@@ -1,8 +1,5 @@
 # plasma-manager krunner module
-
-{ ... }:
-
-{
+{...}: {
   # customize plasma search
   programs.plasma.configFile."krunnerrc" = {
     "Plugins" = {

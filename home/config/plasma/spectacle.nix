@@ -1,8 +1,5 @@
 # plasma-manager spectacle module
-
-{ ... }:
-
-{
+{...}: {
   programs.plasma.spectacle = {
     shortcuts = {
       captureActiveWindow = "";

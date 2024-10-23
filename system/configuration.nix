@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
-
+# main configuration
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./config/docker.nix
     ./hardware-configuration.nix
@@ -33,7 +36,7 @@
 
   # desktop portals
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
   # enable CUPS to print documents.
   services.printing.enable = true;
@@ -57,7 +60,10 @@
   services.fprintd.enable = true;
 
   # enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # time zone
   time.timeZone = "America/Denver";
@@ -89,7 +95,11 @@
   users.users."jayden" = {
     isNormalUser = true;
     description = "Jayden";
-    extraGroups = [ "networkmanager" "wheel" "wireshark" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "wireshark"
+    ];
   };
 
   # sddm
@@ -100,9 +110,7 @@
 
   # kde plasma
   services.desktopManager.plasma6.enable = true;
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    oxygen
-  ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [oxygen];
 
   # disable network wait service
   systemd.services.NetworkManager-wait-online.enable = false;
@@ -115,7 +123,6 @@
 
   # system packages
   environment.systemPackages = with pkgs; [
-
     # apps
     google-chrome
     wireshark
@@ -135,6 +142,8 @@
     # home manager
     home-manager
 
+    # formatter
+    alejandra
   ];
 
   # enable git
@@ -142,17 +151,15 @@
 
   # environment variables
   environment.sessionVariables = {
-
     # make default editor vim
     EDITOR = "vim";
 
     # xdg stuff
-    XDG_CACHE_HOME  = "$HOME/.cache";
+    XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME   = "$HOME/.local/share";
-    XDG_STATE_HOME  = "$HOME/.local/state";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_STATE_HOME = "$HOME/.local/state";
   };
 
   programs.wireshark.enable = true;
-
 }

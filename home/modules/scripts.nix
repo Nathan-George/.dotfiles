@@ -1,7 +1,5 @@
 # scripts used in config
-
-{ lib, ... }:
-
+{lib, ...}:
 with lib; {
   options.scripts = mkOption {
     type = types.attrsOf types.path;

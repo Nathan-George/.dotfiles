@@ -1,8 +1,9 @@
 # plasma theme
-
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     # cursor theme package
     hackneyed

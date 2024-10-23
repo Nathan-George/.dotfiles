@@ -1,7 +1,9 @@
-{ config, pkgs, ... }:
-
+# main home configuration
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./assets
     ./config/chrome.nix
@@ -11,7 +13,7 @@
     ./config/lf.nix
     ./config/mako.nix
     ./config/plasma
-    ./config/python.nix 
+    ./config/python.nix
     ./config/trashy.nix
     ./config/waybar.nix
     ./config/yakuake.nix
@@ -39,7 +41,6 @@
   ];
 
   home.packages = with pkgs; [
-
     # apps
     beeper
     discord
@@ -55,7 +56,5 @@
     # games
     prismlauncher
     smassh
-
   ];
-
 }

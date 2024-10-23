@@ -1,6 +1,6 @@
 {
   description = "My Flake";
-  
+
   inputs = {
     # nix packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -21,12 +21,17 @@
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { nixpkgs, home-manager, nixos-hardware, plasma-manager, nix-colors, ... }:
-  let
+  outputs = {
+    nixpkgs,
+    home-manager,
+    nixos-hardware,
+    plasma-manager,
+    nix-colors,
+    ...
+  }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-
     # nixos configuration
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -47,9 +52,10 @@
           ./home/home.nix
           ./home/modules
         ];
-        extraSpecialArgs = { inherit nix-colors; };
+        extraSpecialArgs = {
+          inherit nix-colors;
+        };
       };
     };
-
   };
 }

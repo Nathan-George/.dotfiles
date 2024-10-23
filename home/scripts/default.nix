@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./logoutprompt.nix
-  ];
-}
+{imports = [./logoutprompt.nix];}

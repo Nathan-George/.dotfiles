@@ -1,13 +1,15 @@
 # yakuake config
 # look here for settings: https://github.com/KDE/yakuake/blob/master/app/config/yakuake.kcfg
-
-{ config, lib, nix-colors, pkgs, ... }:
-
 {
-
+  config,
+  lib,
+  nix-colors,
+  pkgs,
+  ...
+}: {
   home.packages = [
     pkgs.yakuake # install yakuake
-    (import ./yakuake-session.nix { inherit pkgs; }) # create yakuake-session script
+    (import ./yakuake-session.nix {inherit pkgs;}) # create yakuake-session script
   ];
 
   # override default desktop entry
@@ -43,7 +45,10 @@
   # keybinds
   programs.plasma.hotkeys.commands."yakuake" = {
     name = "yakuake";
-    keys = [ "F12" "Launch Media" ];
+    keys = [
+      "F12"
+      "Launch Media"
+    ];
     command = "yakuake";
   };
 
@@ -111,45 +116,46 @@
   '';
 
   # color scheme
-  programs.plasma.dataFile."konsole/yakuake.colorscheme" = let 
+  programs.plasma.dataFile."konsole/yakuake.colorscheme" = let
     fmt = nix-colors.lib.conversions.hexToRGBString ",";
-  in with config.colorScheme.palette; {
-    # background
-    Background.Color = fmt base01;
-    BackgroundIntense.Color = fmt base01;
-    # black
-    Color0.Color = fmt base01;
-    Color0Intense.Color = fmt base02;
-    # red
-    Color1.Color = fmt base08;
-    Color1Intense.Color = fmt base10;
-    # green
-    Color2.Color = fmt base0B;
-    Color2Intense.Color = fmt base13;
-    # yellow
-    Color3.Color = fmt base0A;
-    Color3Intense.Color = fmt base12;
-    # blue
-    Color4.Color = fmt base0D;
-    Color4Intense.Color = fmt base15;
-    # purple
-    Color5.Color = fmt base0E;
-    Color5Intense.Color = fmt base16;
-    # cyan
-    Color6.Color = fmt base0C;
-    Color6Intense.Color = fmt base14;
-    # white
-    Color7.Color = fmt base06;
-    Color7Intense.Color = fmt base07;
-    # foreground
-    Foreground.Color = fmt base06;
-    ForegroundIntense.Color = fmt base06;
+  in
+    with config.colorScheme.palette; {
+      # background
+      Background.Color = fmt base01;
+      BackgroundIntense.Color = fmt base01;
+      # black
+      Color0.Color = fmt base01;
+      Color0Intense.Color = fmt base02;
+      # red
+      Color1.Color = fmt base08;
+      Color1Intense.Color = fmt base10;
+      # green
+      Color2.Color = fmt base0B;
+      Color2Intense.Color = fmt base13;
+      # yellow
+      Color3.Color = fmt base0A;
+      Color3Intense.Color = fmt base12;
+      # blue
+      Color4.Color = fmt base0D;
+      Color4Intense.Color = fmt base15;
+      # purple
+      Color5.Color = fmt base0E;
+      Color5Intense.Color = fmt base16;
+      # cyan
+      Color6.Color = fmt base0C;
+      Color6Intense.Color = fmt base14;
+      # white
+      Color7.Color = fmt base06;
+      Color7Intense.Color = fmt base07;
+      # foreground
+      Foreground.Color = fmt base06;
+      ForegroundIntense.Color = fmt base06;
 
-    General = {
-      Blur = false;
-      ColorRandomization = false;
-      Description = "yakuake";
-      Opacity = 1;
+      General = {
+        Blur = false;
+        ColorRandomization = false;
+        Description = "yakuake";
+        Opacity = 1;
+      };
     };
-  };
 }

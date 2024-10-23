@@ -1,11 +1,6 @@
 # theme colors
-
-{ nix-colors, ... }:
-
-{
-  imports = [
-    nix-colors.homeManagerModules.default
-  ];
+{nix-colors, ...}: {
+  imports = [nix-colors.homeManagerModules.default];
 
   colorScheme = {
     palette = {
@@ -18,14 +13,14 @@
       base06 = "#CBCBCB"; # +++
       base07 = "#F0F0F0"; # ++++
 
-      base08 = "#db3030";  # red
-      base09 = "#f09724";  # orange
-      base0A = "#fad32f";  # yellow
-      base0B = "#65cf48";  # green
-      base0C = "#13bdbd";  # aqua
-      base0D = "#2494c8";  # blue
-      base0E = "#bc3fbc";  # magenta
-      base0F = "#9c5916";  # brown
+      base08 = "#db3030"; # red
+      base09 = "#f09724"; # orange
+      base0A = "#fad32f"; # yellow
+      base0B = "#65cf48"; # green
+      base0C = "#13bdbd"; # aqua
+      base0D = "#2494c8"; # blue
+      base0E = "#bc3fbc"; # magenta
+      base0F = "#9c5916"; # brown
 
       base10 = "#f04a4a"; # light red
       base11 = "#f5a640"; # light orange
@@ -35,7 +30,6 @@
       base15 = "#48bbf0"; # light blue
       base16 = "#d670d6"; # light magenta
       base17 = "#d9ab66"; # light brown
-
     };
   };
 }

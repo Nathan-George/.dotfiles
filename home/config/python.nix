@@ -1,8 +1,5 @@
 # python/pypy config
-
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # specify packages
   home.packages = with pkgs; [
     pypy3

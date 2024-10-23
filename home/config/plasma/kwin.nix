@@ -1,8 +1,5 @@
 # extra kwin config
-
-{ ... }:
-
-{
+{...}: {
   programs.plasma = {
     # disable hot corners
     configFile."kwinrc" = {

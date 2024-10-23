@@ -1,8 +1,5 @@
 # plasma-manager powerdevil module
-
-{ ... }:
-
-{
+{...}: {
   programs.plasma.powerdevil = rec {
     AC = {
       autoSuspend = {

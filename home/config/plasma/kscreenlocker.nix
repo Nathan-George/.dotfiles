@@ -1,10 +1,6 @@
 # plasma-manager kscreenlocker module
-
-{ config, ... }:
-
-{
+{config, ...}: {
   programs.plasma.kscreenlocker = {
-
     lockOnResume = true;
     lockOnStartup = false;
     autoLock = false;
@@ -17,6 +13,5 @@
       showMediaControls = false;
       wallpaper = config.programs.plasma.workspace.wallpaper;
     };
-
   };
 }

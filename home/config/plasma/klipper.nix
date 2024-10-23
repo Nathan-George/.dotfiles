@@ -1,8 +1,5 @@
 # klipper config
-
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.plasma = {
     # start on boot
     startup.startupScript."klipper" = {

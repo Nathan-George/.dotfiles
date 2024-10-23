@@ -1,8 +1,5 @@
 # plasma task switcher
-
-{ ... }:
-
-{
+{...}: {
   programs.plasma = {
     # unused keybinds
     shortcuts = {
