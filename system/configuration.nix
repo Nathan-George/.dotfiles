@@ -2,6 +2,7 @@
 {pkgs, ...}: {
   imports = [
     ./config/docker.nix
+    ./config/wireshark.nix
     ./hardware-configuration.nix
   ];
 
@@ -94,7 +95,6 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      "wireshark"
     ];
   };
 
@@ -121,7 +121,6 @@
   environment.systemPackages = with pkgs; [
     # apps
     google-chrome
-    wireshark
 
     # utils
     brightnessctl
@@ -159,6 +158,4 @@
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
   };
-
-  programs.wireshark.enable = true;
 }
