@@ -1,9 +1,5 @@
 # main configuration
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./config/docker.nix
     ./hardware-configuration.nix
@@ -144,6 +140,9 @@
 
     # formatter
     alejandra
+
+    # nix lsp
+    nixd
   ];
 
   # enable git

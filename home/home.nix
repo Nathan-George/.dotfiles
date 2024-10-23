@@ -1,9 +1,5 @@
 # main home configuration
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./assets
     ./config/chrome.nix
