@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./config/docker.nix
     ./hardware-configuration.nix
   ];
 
@@ -85,10 +86,10 @@
   services.logind.powerKey = "ignore";
 
   # user account
-  users.users.jayden = {
+  users.users."jayden" = {
     isNormalUser = true;
     description = "Jayden";
-    extraGroups = [ "networkmanager" "wheel" "docker" "wireshark" ];
+    extraGroups = [ "networkmanager" "wheel" "wireshark" ];
   };
 
   # sddm
@@ -138,12 +139,6 @@
 
   # enable git
   programs.git.enable = true;
-
-  # enable docker
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = false;
-  };
 
   # environment variables
   environment.sessionVariables = {
