@@ -6,7 +6,8 @@
     ./config/colors.nix
     ./config/fonts.nix
     ./config/git.nix
-    ./config/lf.nix
+    ./config/ipod.nix
+    ./config/lf
     ./config/mako.nix
     ./config/plasma
     ./config/python.nix
