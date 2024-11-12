@@ -11,7 +11,7 @@
     ./config/mako.nix
     ./config/plasma
     ./config/python.nix
-    ./config/trashy.nix
+    ./config/trash.nix
     ./config/waybar.nix
     ./config/yakuake
     ./scripts

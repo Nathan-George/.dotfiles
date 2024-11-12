@@ -1,4 +1,4 @@
-# trashy config
+# trash config
 {pkgs, ...}: {
   home.packages = with pkgs; [trashy];
 
