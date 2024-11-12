@@ -13,7 +13,7 @@
     ./config/python.nix
     ./config/trashy.nix
     ./config/waybar.nix
-    ./config/yakuake.nix
+    ./config/yakuake
     ./scripts
   ];
 

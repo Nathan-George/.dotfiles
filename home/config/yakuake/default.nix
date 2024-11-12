@@ -2,14 +2,19 @@
 # look here for settings: https://github.com/KDE/yakuake/blob/master/app/config/yakuake.kcfg
 {
   config,
-  lib,
   nix-colors,
   pkgs,
   ...
 }: {
-  home.packages = [
-    pkgs.yakuake # install yakuake
-    (import ./yakuake-session.nix {inherit pkgs;}) # create yakuake-session script
+  home.packages = with pkgs; [
+    yakuake
+    (import ./yakuake-session.nix {inherit pkgs;}) # import yakuake-session script
+    # fonts
+    (nerdfonts.override {
+      fonts = [
+        "DejaVuSansMono"
+      ];
+    })
   ];
 
   # override default desktop entry

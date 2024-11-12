@@ -1,13 +1,7 @@
 # fonts
 {pkgs, ...}: {
   fonts.fontconfig.enable = true;
+  # global fonts
   home.packages = with pkgs; [
-    # only install certain patches of nerdfonts (to save space)
-    (nerdfonts.override {
-      fonts = [
-        "DejaVuSansMono" # for yakuake
-        "Hack" # for waybar
-      ];
-    })
   ];
 }

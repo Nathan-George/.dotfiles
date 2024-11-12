@@ -1,12 +1,15 @@
 # waybar config
 {
   config,
-  lib,
   pkgs,
   ...
 }: {
   # nerd font
-  home.packages = with pkgs; [(nerdfonts.override {fonts = ["Hack"];})];
+  home.packages = with pkgs; [
+    (nerdfonts.override {
+      fonts = ["Hack"];
+    })
+  ];
 
   # start on boot
   programs.plasma.startup.startupScript."waybar" = {
