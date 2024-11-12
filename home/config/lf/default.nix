@@ -1,89 +1,32 @@
 # lf config
 {pkgs, ...}: let
-  wrapper_script = "${pkgs.writeShellScriptBin "lf_wrapper" ''
-    cleanup() {
-      # Clean up the tempdir if and only if we created it.
-      if [ "$cleanup_tempdir" = "1" ]; then
-        rm -r "$LF_TEMPDIR" 2>/dev/null
-      fi
-      kill $ueberzugpid 2>/dev/null
-    }
+  # define packages used
+  bat = "${pkgs.bat}/bin/bat";
+  pistol = "${pkgs.pistol}/bin/pistol";
+  zip = "${pkgs.zip}/bin/zip";
+  unzip = "${pkgs.unzip}/bin/unzip";
+  file = "${pkgs.file}/bin/file";
+  trash = "${pkgs.trashy}/bin/trash";
 
-    # Set up a temporary directory if not alreay done so by a calling
-    # wrapper script (e.g. lfcd).
-    if [ -z "$LF_TEMPDIR" ]; then
-      cleanup_tempdir=1
-      export LF_TEMPDIR="$(${pkgs.mktemp}/bin/mktemp -d -t lf-tempdir-XXXXXX)"
-    fi
-
-    trap cleanup INT
-
-    export LF_FIFO_UEBERZUG="$LF_TEMPDIR/fifo"
-    mkfifo "$LF_FIFO_UEBERZUG"
-    tail -f "$LF_FIFO_UEBERZUG" | ${pkgs.ueberzugpp}/bin/ueberzug layer --silent &
-    ueberzugpid=$!
-
+  wrapper_script = pkgs.writeShellScript "lf_wrapper_script" ''
     # open lf, then cd to the last directory upon close
     cd "$(command lf -print-last-dir "$@")"
+  '';
 
-    cleanup
-  ''}/bin/lf_wrapper";
-
-  cleaner_script = "${pkgs.writeShellScriptBin "lf_cleaner" ''
-    cat <<EOF | paste -s -d ''' > "$LF_FIFO_UEBERZUG"
-    {
-    "action": "remove",
-    "identifier": "lf-preview"
-    }
-    EOF
-  ''}/bin/lf_cleaner";
-
-  previewer_script = "${pkgs.writeShellScriptBin "lf_previewer" ''
-    preview() {
-      cat <<STOP | paste -s -d ''' > "$LF_FIFO_UEBERZUG"
-    {
-    "action": "add", "identifier": "lf-preview",
-    "path": "$1", "x": $4, "y": $5, "width": $2, "height": $3,
-    "scaler": "contain"
-    }
-    STOP
-    }
-
-    ${cleaner_script} # clean active preview
-
-    file="$1"; shift
-    case "$(${pkgs.file}/bin/file --mime-type -b "$file")" in
-    text/*)
-      ${pkgs.bat}/bin/bat --force-colorization --paging=never --style=changes,numbers --terminal-width $(($1 - 3)) "$file" && false;;
-    video/*)
-      thumbnail="$LF_TEMPDIR/thumbnail.png"
-      ${pkgs.ffmpeg}/bin/ffmpeg -y -i "$file" -vframes 1 "$thumbnail"
-      preview "$thumbnail" "$@"
-      ;;
-    application/pdf)
-      thumbnail="$LF_TEMPDIR/thumbnail.png"
-      ${pkgs.ghostscript_headless}/bin/gs -o "$thumbnail" -sDEVICE=pngalpha -dLastPage=1 "$file" >/dev/null
-      preview "$thumbnail" "$@"
-      ;;
-    image/svg+xml)
-      thumbnail="$LF_TEMPDIR/thumbnail.png"
-      ${pkgs.imagemagick}/bin/convert "$file" "$thumbnail"
-      preview "$thumbnail" "$@"
-      ;;
-    image/*)
-      preview "$file" "$@"
-      ;;
-    *)
-      ${pkgs.pistol}/bin/pistol "$1"
-      ;;
+  previewer_script = pkgs.writeShellScript "lf_preview_script" ''
+    case "$(${pkgs.file}/bin/file --mime-type -b "$1")" in
+      *text/*)
+        ${bat} --force-colorization --paging=never --style=changes,numbers --terminal-width $(($2 - 3)) "$1" && false;;
+      *)
+        ${pistol} "$1";;
     esac
-    return 127 # nonzero retcode required for lf previews to reload
-  ''}/bin/lf_previewer";
+  '';
 in {
+  # font
   home.packages = with pkgs; [
-    font-awesome
-    chafa
-    ueberzugpp
+    (nerdfonts.override {
+      fonts = ["DejaVuSansMono"];
+    })
   ];
 
   # make lf default file explorer
@@ -95,8 +38,9 @@ in {
   };
 
   # wrapper script
-  home.shellAliases.lf = wrapper_script;
+  # home.shellAliases.lf = wrapper_script;
   # home.shellAliases.lf = ". ${wrapper_script}";
+  home.shellAliases.lf = "${wrapper_script}";
 
   # config
   programs.lf = {
@@ -113,11 +57,11 @@ in {
     };
 
     commands = {
-      zip = "%${pkgs.zip}/bin/zip -rj \"$f.zip\" \"$f\"";
+      zip = "%${zip} -rj \"$f.zip\" \"$f\"";
       unzip = ''
         ''${{
                 case "$f" in
-                  *.zip) ${pkgs.unzip}/bin/unzip "$f" ;;
+                  *.zip) ${unzip} "$f" ;;
                   *.tar.gz|*.tgz) tar -xzvf "$f" ;;
                   *.tar.bz2) tar -xjvf "$f" ;;
                   *.tar) tar -xvf "$f" ;;
@@ -126,7 +70,7 @@ in {
               }}'';
       open = ''
         ''${{
-                case $(${pkgs.file}/bin/file --mime-type -bL "$f") in
+                case $(${file} --mime-type -bL "$f") in
                   text/*|application/json) $EDITOR "$f";;
                   application/x-executable) "$f";;
                   *) xdg-open "$f" ;;
@@ -144,8 +88,8 @@ in {
                 read ans
                 $EDITOR $ans
               }}'';
-      trash = "%${pkgs.trashy}/bin/trash \"$f\"";
-      untrash = "%${pkgs.trashy}/bin/trash restore --force -r 0";
+      trash = "%${trash} \"$f\"";
+      untrash = "%${trash} restore --force -r 0";
     };
 
     keybindings = {
@@ -169,10 +113,6 @@ in {
     };
 
     previewer.source = previewer_script;
-
-    extraConfig = ''
-      set cleaner ${cleaner_script}
-    '';
   };
 
   # icons
