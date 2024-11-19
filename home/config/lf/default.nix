@@ -38,9 +38,7 @@ in {
   };
 
   # wrapper script
-  # home.shellAliases.lf = wrapper_script;
-  # home.shellAliases.lf = ". ${wrapper_script}";
-  home.shellAliases.lf = "${wrapper_script}";
+  home.shellAliases.lf = ". ${wrapper_script}";
 
   # config
   programs.lf = {
