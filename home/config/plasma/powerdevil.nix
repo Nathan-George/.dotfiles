@@ -8,7 +8,7 @@
       };
       turnOffDisplay = {
         idleTimeout = 1500; # 25 mins
-        idleTimeoutWhenLocked = 60;
+        idleTimeoutWhenLocked = "immediately";
       };
       dimDisplay = {
         enable = true;
@@ -25,7 +25,7 @@
       };
       turnOffDisplay = {
         idleTimeout = 600; # 10 mins
-        idleTimeoutWhenLocked = 60;
+        idleTimeoutWhenLocked = "immediately";
       };
       dimDisplay = {
         enable = true;
