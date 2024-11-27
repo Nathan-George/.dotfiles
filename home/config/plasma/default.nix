@@ -10,6 +10,7 @@
     ./kwin.nix
     ./panels.nix
     ./powerdevil.nix
+    ./session.nix
     ./shortcuts.nix
     ./spectacle.nix
     ./taskswitcher.nix
