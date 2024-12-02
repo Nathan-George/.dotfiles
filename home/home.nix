@@ -52,7 +52,6 @@
 
     # games
     prismlauncher
-    openjdk8-bootstrap # java version 8 for old minecraft versions
     smassh
   ];
 }
