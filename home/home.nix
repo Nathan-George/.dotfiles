@@ -47,8 +47,9 @@
     vscode
 
     # utils
-    wl-clipboard
     libnotify
+    wirelesstools
+    wl-clipboard
 
     # games
     prismlauncher
