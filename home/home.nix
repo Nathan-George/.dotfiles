@@ -48,7 +48,6 @@
 
     # utils
     libnotify
-    wirelesstools
     wl-clipboard
 
     # games

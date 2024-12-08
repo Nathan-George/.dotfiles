@@ -132,6 +132,7 @@
     unzip
     vim
     wget
+    wirelesstools
     zip
 
     # home manager
