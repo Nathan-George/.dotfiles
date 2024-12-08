@@ -9,12 +9,8 @@
   home.packages = with pkgs; [
     yakuake
     (import ./yakuake-session.nix {inherit pkgs;}) # import yakuake-session script
-    # fonts
-    (nerdfonts.override {
-      fonts = [
-        "DejaVuSansMono"
-      ];
-    })
+    # font
+    nerd-fonts.dejavu-sans-mono
   ];
 
   # override default desktop entry

@@ -6,9 +6,7 @@
 }: {
   # nerd font
   home.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = ["Hack"];
-    })
+    nerd-fonts.hack
   ];
 
   # start on boot

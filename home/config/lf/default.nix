@@ -24,9 +24,7 @@
 in {
   # font
   home.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = ["DejaVuSansMono"];
-    })
+    nerd-fonts.dejavu-sans-mono
   ];
 
   # make lf default file explorer
