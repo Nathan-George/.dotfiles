@@ -1,7 +1,13 @@
 # main configuration
 {pkgs, ...}: {
   imports = [
+    ./config/bluetooth.nix
     ./config/docker.nix
+    ./config/garbage.nix
+    ./config/locale.nix
+    ./config/plasma.nix
+    ./config/power.nix
+    ./config/sddm.nix
     ./config/wireshark.nix
     ./hardware-configuration.nix
   ];
@@ -14,13 +20,6 @@
 
   # framework hardware stuff
   services.fwupd.enable = true;
-
-  # automatic garbage collection
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
 
   # hostname
   networking.hostName = "nixos";
@@ -37,10 +36,6 @@
 
   # enable CUPS to print documents.
   services.printing.enable = true;
-
-  # enable bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
 
   # enable sound with pipewire
   hardware.pulseaudio.enable = false;
@@ -62,31 +57,11 @@
     "flakes"
   ];
 
-  # time zone
-  time.timeZone = "America/Denver";
-
-  # locale
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
   # X11 keymap
   services.xserver = {
     xkb.layout = "us";
     xkb.variant = "";
   };
-
-  # power/sleep options
-  services.logind.lidSwitch = "hibernate";
-  services.logind.powerKey = "ignore";
 
   # user account
   users.users."jayden" = {
@@ -98,17 +73,7 @@
     ];
   };
 
-  # sddm
-  services.displayManager = {
-    sddm.enable = true;
-    defaultSession = "plasma";
-  };
-
-  # kde plasma
-  services.desktopManager.plasma6.enable = true;
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [oxygen];
-
-  # disable network wait service
+  # disable network wait service (this caused boot to be slow)
   systemd.services.NetworkManager-wait-online.enable = false;
 
   # make apps not blurry
