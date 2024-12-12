@@ -94,6 +94,7 @@
     neofetch
     playerctl
     python312
+    traceroute
     unzip
     vim
     wget
