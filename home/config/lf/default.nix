@@ -89,7 +89,7 @@ in {
     };
 
     keybindings = {
-      h = "set hidden!"; # toggle hidden files
+      "<c-h>" = "set hidden!"; # toggle hidden files
       c = "copy";
       x = "cut";
       v = "paste";

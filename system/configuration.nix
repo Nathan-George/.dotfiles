@@ -105,6 +105,14 @@
   # enable git
   programs.git.enable = true;
 
+  # emable steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
   # environment variables
   environment.sessionVariables = {
     # make default editor vim

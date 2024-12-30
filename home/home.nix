@@ -10,9 +10,9 @@
     ./config/plasma
     #./config/python.nix
     ./config/trash.nix
-    #./config/waybar.nix
+    ./config/waybar.nix
     #./config/yakuake
-    #./scripts
+    ./scripts
   ];
 
   home = rec {
@@ -27,6 +27,7 @@
   # enable bash
   programs.bash.enable = true;
 
+
   # allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -36,10 +37,14 @@
   ];
 
   home.packages = with pkgs; [
+    # terminal
+    ghostty
+
     # apps
     discord
     obsidian
     vscode
+    neovim
 
     # utils
     libnotify
