@@ -1,5 +1,5 @@
 {
-  description = "My Flake";
+  description = "Nathan's Nix Configuration";
 
   inputs = {
     # nix packages
@@ -38,14 +38,14 @@
         inherit system;
         modules = [
           ./system/configuration.nix
-          nixos-hardware.nixosModules.framework-11th-gen-intel
+          nixos-hardware.nixosModules.framework-13th-gen-intel
         ];
       };
     };
 
     # home manager configuration
     homeConfigurations = {
-      jayden = home-manager.lib.homeManagerConfiguration {
+      nathan = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           plasma-manager.homeManagerModules.plasma-manager

@@ -2,23 +2,21 @@
 {pkgs, ...}: {
   imports = [
     ./assets
-    ./config/chrome.nix
     ./config/colors.nix
     ./config/fonts.nix
     ./config/git.nix
-    ./config/ipod.nix
     ./config/lf
-    ./config/mako.nix
+    #./config/mako.nix
     ./config/plasma
-    ./config/python.nix
+    #./config/python.nix
     ./config/trash.nix
-    ./config/waybar.nix
-    ./config/yakuake
-    ./scripts
+    #./config/waybar.nix
+    #./config/yakuake
+    #./scripts
   ];
 
   home = rec {
-    username = "jayden";
+    username = "nathan";
     homeDirectory = "/home/${username}";
     stateVersion = "23.11"; # do not change
   };
@@ -39,19 +37,12 @@
 
   home.packages = with pkgs; [
     # apps
-    beeper
     discord
-    kate
     obsidian
-    spotify
     vscode
 
     # utils
     libnotify
     wl-clipboard
-
-    # games
-    prismlauncher
-    smassh
   ];
 }

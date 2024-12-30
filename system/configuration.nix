@@ -8,7 +8,6 @@
     ./config/plasma.nix
     ./config/power.nix
     ./config/sddm.nix
-    ./config/wireshark.nix
     ./hardware-configuration.nix
   ];
 
@@ -64,9 +63,9 @@
   };
 
   # user account
-  users.users."jayden" = {
+  users.users."nathan" = {
     isNormalUser = true;
-    description = "Jayden";
+    description = "Nathan George";
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -84,28 +83,20 @@
 
   # system packages
   environment.systemPackages = with pkgs; [
-    # apps
-    google-chrome
-
     # utils
     brightnessctl
     file
+    firefox
     killall
     neofetch
-    playerctl
-    python312
     traceroute
     unzip
     vim
     wget
-    wirelesstools
     zip
 
     # home manager
     home-manager
-
-    # formatter
-    alejandra
 
     # nix lsp
     nixd

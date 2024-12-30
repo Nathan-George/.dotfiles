@@ -6,5 +6,5 @@
   };
 
   # add user to docker group
-  users.users."jayden".extraGroups = ["docker"];
+  users.users."nathan".extraGroups = ["docker"];
 }
