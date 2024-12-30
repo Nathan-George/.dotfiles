@@ -113,6 +113,8 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  hardware.xpadneo.enable = true;
+
   # environment variables
   environment.sessionVariables = {
     # make default editor vim
