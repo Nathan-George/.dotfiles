@@ -27,7 +27,6 @@
   # enable bash
   programs.bash.enable = true;
 
-
   # allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -49,5 +48,8 @@
     # utils
     libnotify
     wl-clipboard
+
+    # games
+    prismlauncher
   ];
 }

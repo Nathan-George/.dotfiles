@@ -5,21 +5,22 @@
     touchpad = rec {
       acceleration = pointerSpeed;
       accelerationProfile = "none";
-      disableWhileTyping = false;
+      disableWhileTyping = true;
       enable = true;
       name = "PIXA3854:00 093A:0274 Touchpad";
       naturalScroll = true;
-      pointerSpeed = 0.5;
+      pointerSpeed = 1.0;
       productId = "0274";
       rightClickMethod = "twoFingers";
       scrollMethod = "twoFingers";
       scrollSpeed = 0.2;
-      tapAndDrag = false;
+      tapAndDrag = true;
       tapToClick = true;
       twoFingerTap = "rightClick";
       vendorId = "093a";
     };
   in {
+    # TODO: add my mouse
     mice = [
       {
         acceleration = -0.2;
