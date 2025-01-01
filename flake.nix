@@ -4,24 +4,29 @@
   inputs = {
     # nix packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     # home manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # hardware specific configuration
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     # plasma manager
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    # hardware specific configuration
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     # nix colors
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = {
+  outputs = inputs@{
+    self,
     nixpkgs,
     home-manager,
     nixos-hardware,
@@ -37,20 +42,20 @@
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./system/configuration.nix
           nixos-hardware.nixosModules.framework-13th-gen-intel
+          ./system/configuration.nix
         ];
       };
     };
 
     # home manager configuration
     homeConfigurations = {
-      nathan = home-manager.lib.homeManagerConfiguration {
+      antero = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           plasma-manager.homeManagerModules.plasma-manager
           ./home/home.nix
-          ./home/modules
+          ./home/profiles/antero.nix
         ];
         extraSpecialArgs = {
           inherit nix-colors;
