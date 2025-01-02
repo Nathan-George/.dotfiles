@@ -50,12 +50,12 @@
 
     # home manager configuration
     homeConfigurations = {
-      antero = home-manager.lib.homeManagerConfiguration {
+      nathan = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           plasma-manager.homeManagerModules.plasma-manager
           ./home/home.nix
-          ./home/profiles/antero.nix
+          ./home/profiles/nathan.nix
         ];
         extraSpecialArgs = {
           inherit nix-colors;
