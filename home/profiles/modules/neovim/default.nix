@@ -9,9 +9,11 @@
     ];
     extraPackages = with pkgs; [
       # lsp
+      zls
       # formaters
       
       # tools some plugins need
+      bashInteractive
       gcc
       fzf
     ];

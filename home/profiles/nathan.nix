@@ -20,6 +20,7 @@
     # apps
     discord
     obsidian
+    jetbrains.idea-ultimate
     vscode
 
     # shell utils
