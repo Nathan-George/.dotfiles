@@ -21,11 +21,14 @@
     discord
     obsidian
     jetbrains.idea-ultimate
+    eclipses.eclipse-java
     vscode
+    rars
 
     # shell utils
     libnotify
     wl-clipboard
+    gcc
 
     # games
     prismlauncher

@@ -34,6 +34,8 @@
   hardware.bluetooth.powerOnBoot = true;
   hardware.xpadneo.enable = true;
 
+  programs.hyprland.enable = true;
+
   # window manager
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages; [oxygen];
@@ -92,6 +94,7 @@
   # system packages
   environment.systemPackages = with pkgs; [
     # utils
+    kitty
     brightnessctl
     file
     firefox
