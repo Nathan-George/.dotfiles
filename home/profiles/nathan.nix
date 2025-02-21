@@ -18,6 +18,8 @@
     ghostty
 
     # apps
+    firefox
+    globalprotect-openconnect
     discord
     obsidian
     jetbrains.idea-ultimate
@@ -29,6 +31,7 @@
     libnotify
     wl-clipboard
     gcc
+    python313
 
     # games
     prismlauncher

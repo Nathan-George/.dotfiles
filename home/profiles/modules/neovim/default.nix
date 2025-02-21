@@ -2,16 +2,26 @@
   # setup neovim
   programs.neovim = {
     enable = true;
+
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
     defaultEditor = true;
+
     plugins = with pkgs.vimPlugins; [
       # plugins are managed by lazy.nvim
       lazy-nvim
     ];
+
     extraPackages = with pkgs; [
       # lsp
+      lua-language-server
+      nixd
       zls
-      # formaters
-      
+      pyright
+      gopls
+      ocamlPackages.ocaml-lsp
+
       # tools some plugins need
       bashInteractive
       gcc
