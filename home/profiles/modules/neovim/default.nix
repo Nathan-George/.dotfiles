@@ -23,6 +23,14 @@
       ocamlPackages.ocaml-lsp
 
       # tools some plugins need
+      luajitPackages.luarocks
+      imagemagick
+      texliveSmall
+      mermaid-cli
+      lazygit
+      ripgrep
+      fd
+      ghostscript
       bashInteractive
       gcc
       fzf
