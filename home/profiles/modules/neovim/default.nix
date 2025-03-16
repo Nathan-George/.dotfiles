@@ -21,6 +21,7 @@
       pyright
       gopls
       ocamlPackages.ocaml-lsp
+      clang-tools
 
       # tools some plugins need
       luajitPackages.luarocks

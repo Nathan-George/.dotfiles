@@ -31,19 +31,19 @@
         productId = "006e";
         vendorId = "1532";
       }
-      {
-        inherit
-          (touchpad)
-          acceleration
-          accelerationProfile
-          enable
-          name
-          naturalScroll
-          productId
-          scrollSpeed
-          vendorId
-          ;
-      }
+      # {
+      #   inherit
+      #     (touchpad)
+      #     acceleration
+      #     accelerationProfile
+      #     enable
+      #     name
+      #     naturalScroll
+      #     productId
+      #     scrollSpeed
+      #     vendorId
+      #     ;
+      # }
     ];
     touchpads = [
       {

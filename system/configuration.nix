@@ -34,7 +34,7 @@
   hardware.bluetooth.powerOnBoot = true;
   hardware.xpadneo.enable = true;
 
-  programs.hyprland.enable = true;
+  # programs.hyprland.enable = true;
 
   # window manager
   services.desktopManager.plasma6.enable = true;
@@ -65,7 +65,6 @@
   services.printing.enable = true;
 
   # enable sound with pipewire
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
