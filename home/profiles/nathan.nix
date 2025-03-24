@@ -26,6 +26,7 @@
     eclipses.eclipse-java
     vscode
     rars
+    vlc
 
     # shell utils
     libnotify
