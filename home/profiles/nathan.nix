@@ -26,6 +26,7 @@
     eclipses.eclipse-java
     vscode
     rars
+    ripes
     vlc
 
     # shell utils
