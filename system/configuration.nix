@@ -75,6 +75,8 @@
     jack.enable = true;
   };
 
+  services.usbmuxd.enable = true;
+
   # hostname
   networking.hostName = "nixos";
 

@@ -28,6 +28,10 @@
     rars
     ripes
     vlc
+    kdePackages.kdenlive
+
+    # allow mounting IOS devices
+    ifuse
 
     # shell utils
     libnotify
