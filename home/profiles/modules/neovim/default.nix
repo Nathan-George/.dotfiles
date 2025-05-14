@@ -22,6 +22,7 @@
       gopls
       ocamlPackages.ocaml-lsp
       clang-tools
+      harper
 
       # tools some plugins need
       luajitPackages.luarocks
