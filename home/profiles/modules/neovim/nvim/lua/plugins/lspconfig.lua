@@ -26,25 +26,25 @@ return {
       gopls = {},
       ocamllsp = {},
       harper_ls = {
-       settings = {
-        ["harper-ls"] = {
-          userDictPath = "",
-          fileDictPath = "",
-          linters = {
-            SpellCheck = true,
-            SentenceCapitalization = false,
-          },
-          codeActions = {
-            ForceStable = false
-          },
-          markdown = {
-            IgnoreLinkTitle = false
-          },
-          diagnosticSeverity = "hint",
-          isolateEnglish = false,
-          dialect = "American"
+        settings = {
+          ["harper-ls"] = {
+            userDictPath = "",
+            fileDictPath = "",
+            linters = {
+              SpellCheck = true,
+              SentenceCapitalization = false,
+            },
+            codeActions = {
+              ForceStable = false
+            },
+            markdown = {
+              IgnoreLinkTitle = false
+            },
+            diagnosticSeverity = "hint",
+            isolateEnglish = false,
+            dialect = "American"
+          }
         }
-      }
       },
     }
   },

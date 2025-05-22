@@ -23,6 +23,7 @@
       ocamlPackages.ocaml-lsp
       clang-tools
       harper
+      vue-language-server
 
       # tools some plugins need
       luajitPackages.luarocks
@@ -36,6 +37,8 @@
       bashInteractive
       gcc
       fzf
+      nodejs_22
+      typescript
     ];
   };
 
