@@ -16,7 +16,7 @@
         productId = "0274";
         vendorId = "093a";
 
-        pointerSpeed = 0.8;
+        pointerSpeed = 0.6;
         scrollSpeed = 0.4;
         tapAndDrag = true;
         tapToClick = true;

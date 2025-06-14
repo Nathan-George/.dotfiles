@@ -41,6 +41,10 @@
 
     # games
     prismlauncher
+
+    # fonts
+    junicode
   ];
 
+  fonts.fontconfig.enable = true;
 }
