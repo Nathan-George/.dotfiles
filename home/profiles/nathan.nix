@@ -1,7 +1,5 @@
-{pkgs, ...} : {
-  imports = [
-    ./modules
-  ];
+{pkgs, ...}: {
+  imports = [./modules];
 
   # enable bash
   programs.bash.enable = true;
@@ -22,11 +20,7 @@
     globalprotect-openconnect
     discord
     obsidian
-    jetbrains.idea-ultimate
-    eclipses.eclipse-java
     vscode
-    rars
-    ripes
     vlc
     kdePackages.kdenlive
 
@@ -41,9 +35,6 @@
 
     # games
     prismlauncher
-
-    # fonts
-    junicode
   ];
 
   fonts.fontconfig.enable = true;

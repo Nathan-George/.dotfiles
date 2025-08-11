@@ -21,12 +21,18 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    # zen browser
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     # nix colors
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = inputs@{
-    self,
+  outputs = inputs @ {
     nixpkgs,
     home-manager,
     nixos-hardware,
@@ -37,6 +43,9 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
+    # formatter
+    formatter.${system} = pkgs.alejandra;
+
     # nixos configuration
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -59,6 +68,7 @@
         ];
         extraSpecialArgs = {
           inherit nix-colors;
+          inherit inputs;
         };
       };
     };

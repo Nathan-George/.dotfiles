@@ -9,9 +9,7 @@
   '';
 in {
   # nerd font
-  home.packages = with pkgs; [
-    nerd-fonts.hack
-  ];
+  home.packages = with pkgs; [nerd-fonts.hack];
 
   # start on boot
   programs.plasma.startup.startupScript."waybar" = {
@@ -28,18 +26,9 @@ in {
       position = "top";
       height = 24;
       spacing = 20;
-      modules-left = [
-        "custom/nixlogo"
-        "clock"
-      ];
+      modules-left = ["custom/nixlogo" "clock"];
       modules-center = [];
-      modules-right = [
-        "idle_inhibitor"
-        "network"
-        "memory"
-        "cpu"
-        "battery"
-      ];
+      modules-right = ["idle_inhibitor" "network" "memory" "cpu" "battery"];
 
       # modules
       "custom/nixlogo" = {
@@ -66,11 +55,11 @@ in {
         "format-ethernet" = "{ipaddr}/{cidr} ";
         "format-linked" = "{ifname} (No IP) ";
         "format-disconnected" = "Disconnected ⚠";
-        "tooltip-format" = "IP = {ipaddr}/{cidr}\nOn {ifname} via {gwaddr}";
+        "tooltip-format" = ''
+          IP = {ipaddr}/{cidr}
+          On {ifname} via {gwaddr}'';
       };
-      "memory" = {
-        "format" = "Mem {}%";
-      };
+      "memory" = {"format" = "Mem {}%";};
       "cpu" = {
         "format" = "CPU {usage}%";
         "tooltip" = true;
@@ -85,13 +74,7 @@ in {
         "format-charging" = "{capacity}% ";
         "format-plugged" = "{capacity}% ";
         "format-tooltip" = "Time to empty: {time}";
-        "format-icons" = [
-          ""
-          ""
-          ""
-          ""
-          ""
-        ];
+        "format-icons" = ["" "" "" "" ""];
       };
     };
 

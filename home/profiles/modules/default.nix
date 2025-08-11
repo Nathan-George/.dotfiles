@@ -1,13 +1,12 @@
-{...} : {
+{...}: {
   imports = [
     ./colors.nix
     ./fonts.nix
-    ./git.nix
-    ./lf
-    ./mako.nix
     ./neovim
+    ./zen-browser.nix
+    ./git.nix
     ./plasma
-    ./trash.nix
     ./waybar.nix
+    ./mako.nix
   ];
 }

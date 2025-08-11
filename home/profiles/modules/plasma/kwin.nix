@@ -2,14 +2,8 @@
 {...}: {
   programs.plasma = {
     # disable hot corners
-    configFile."kwinrc" = {
-      "Effect-overview" = {
-        "BorderActivate" = 9;
-      };
-    };
+    configFile."kwinrc" = {"Effect-overview" = {"BorderActivate" = 9;};};
 
-    kwin = {
-      edgeBarrier = 50;
-    };
+    kwin = {edgeBarrier = 50;};
   };
 }

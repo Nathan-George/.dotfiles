@@ -9,10 +9,7 @@
   ];
 
   # enable flakes
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # bootloader
   boot.loader.systemd-boot.enable = true;
@@ -84,10 +81,7 @@
   users.users."nathan" = {
     isNormalUser = true;
     description = "Nathan George";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   # allow unfree packages

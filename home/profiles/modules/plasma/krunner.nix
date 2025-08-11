@@ -32,8 +32,6 @@
       "unitconverterEnabled" = false;
       "windowsEnabled" = false;
     };
-    "Plugins/Favorites" = {
-      "plugins" = "krunner_services";
-    };
+    "Plugins/Favorites" = {"plugins" = "krunner_services";};
   };
 }

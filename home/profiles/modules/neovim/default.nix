@@ -1,4 +1,8 @@
-{pkgs, config, ...} : {
+{
+  pkgs,
+  config,
+  ...
+}: {
   # setup neovim
   programs.neovim = {
     enable = true;
@@ -42,5 +46,7 @@
     ];
   };
 
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/nathan/.dotfiles/home/profiles/modules/neovim/nvim";
+  xdg.configFile."nvim".source =
+    config.lib.file.mkOutOfStoreSymlink
+    "/home/nathan/.dotfiles/home/profiles/modules/neovim/nvim";
 }
