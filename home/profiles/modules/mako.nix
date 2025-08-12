@@ -2,7 +2,9 @@
 {config, ...}: {
   services.mako = {
     enable = true;
-    defaultTimeout = 3000;
+    settings = {
+      default-timeout = 3000;
+    };
 
     extraConfig = with config.colorScheme.palette; ''
       background-color=#${base00}
