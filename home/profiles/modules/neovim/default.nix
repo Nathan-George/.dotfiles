@@ -28,6 +28,7 @@
       clang-tools
       harper
       vue-language-server
+      svelte-language-server
 
       # tools some plugins need
       luajitPackages.luarocks
