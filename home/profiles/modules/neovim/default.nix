@@ -57,16 +57,17 @@
       name = "nvim-treesitter-grammars";
       paths = pkgs.vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
     };
-  in with pkgs.vimPlugins; ''
-    -- set if neovim is running on nixos
-    vim.g.nixos = true
+  in
+    with pkgs.vimPlugins; ''
+      -- set if neovim is running on nixos
+      vim.g.nixos = true
 
-    -- list of all plugins
-    vim.g.plugin_paths = {
-      ["${nvim-treesitter.pname}"] = "${nvim-treesitter}",
-    }
+      -- list of all plugins
+      vim.g.plugin_paths = {
+        ["${nvim-treesitter.pname}"] = "${nvim-treesitter}",
+      }
 
-    -- needed to add back the grammars to the run time path (rtp)
-    vim.g.treesitter_grammars_path = "${grammarsPath}"
-  '';
+      -- needed to add back the grammars to the run time path (rtp)
+      vim.g.treesitter_grammars_path = "${grammarsPath}"
+    '';
 }
