@@ -13,8 +13,8 @@
     defaultEditor = true;
 
     plugins = with pkgs.vimPlugins; [
-      # plugins are managed by lazy.nvim
       lazy-nvim
+      nvim-treesitter.withAllGrammars
     ];
 
     extraPackages = with pkgs; [
@@ -50,4 +50,23 @@
   xdg.configFile."nvim".source =
     config.lib.file.mkOutOfStoreSymlink
     "/home/nathan/.dotfiles/home/profiles/modules/neovim/nvim";
+
+  # We cannot generate any files in `.config/nvim` because that is a symlink so we use `.config/nvim.nix` instead
+  xdg.configFile."nvim.nix/init.lua".text = let
+    grammarsPath = pkgs.symlinkJoin {
+      name = "nvim-treesitter-grammars";
+      paths = pkgs.vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
+    };
+  in with pkgs.vimPlugins; ''
+    -- set if neovim is running on nixos
+    vim.g.nixos = true
+
+    -- list of all plugins
+    vim.g.plugin_paths = {
+      ["${nvim-treesitter.pname}"] = "${nvim-treesitter}",
+    }
+
+    -- needed to add back the grammars to the run time path (rtp)
+    vim.g.treesitter_grammars_path = "${grammarsPath}"
+  '';
 }

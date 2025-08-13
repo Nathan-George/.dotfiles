@@ -25,6 +25,8 @@ return {
       pyright = {},
       gopls = {},
       ocamllsp = {},
+      svelte = {},
+
       harper_ls = {
         settings = {
           ["harper-ls"] = {
