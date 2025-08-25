@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./modules
-    ./nathan.nix
+    ./school.nix
   ];
 
   # enable bash
