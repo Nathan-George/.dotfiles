@@ -26,6 +26,7 @@ return {
       gopls = {},
       ocamllsp = {},
       svelte = {},
+      clangd = {},
 
       harper_ls = {
         settings = {

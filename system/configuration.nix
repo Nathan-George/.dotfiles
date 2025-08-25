@@ -27,8 +27,18 @@
   systemd.services.NetworkManager-wait-online.enable = false;
 
   # enable bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  hardware.bluetooth = {
+    enable = true; # enables support for Bluetooth
+    powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    settings = {
+      General = {
+        Privacy = "device";
+        JustWorksRepairing = "always";
+        Class = "0x000100";
+        FastConnectable = "true";
+      };
+    };
+  };
   hardware.xpadneo.enable = true;
 
   # programs.hyprland.enable = true;

@@ -1,5 +1,8 @@
 {pkgs, ...}: {
-  imports = [./modules];
+  imports = [
+    ./modules
+    ./nathan.nix
+  ];
 
   # enable bash
   programs.bash.enable = true;
@@ -17,7 +20,6 @@
 
     # apps
     firefox
-    globalprotect-openconnect
     discord
     obsidian
     vscode
