@@ -1,2 +1,5 @@
+# License Files
+*.dat
+
 *.code-workspace
 result
