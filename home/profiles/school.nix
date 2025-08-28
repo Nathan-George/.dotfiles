@@ -4,11 +4,7 @@
     quartus-prime-lite
   ];
 
-  home.sessionSearchVariables = let
-    quartus-license-file = ./LR-247745_License.dat;
-  in {
-    LM_LICENSE_FILE = [
-      quartus-license-file
-    ];
+  home.sessionVariables = {
+    LM_LICENSE_FILE = "/home/nathan/.dotfiles/home/profiles/LR-247745_License.dat";
   };
 }
