@@ -1,3 +1,3 @@
 [
-  import ./quartus-prime-lite
+  (import ./quartus-prime-lite)
 ]

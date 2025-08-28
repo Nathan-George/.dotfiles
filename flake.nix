@@ -40,7 +40,7 @@
     nix-colors,
     ...
   }: let
-    overlays = import ./overlays;
+    overlays = (import ./overlays);
 
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system overlays; };
