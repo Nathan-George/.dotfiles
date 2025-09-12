@@ -83,6 +83,7 @@
   };
 
   services.usbmuxd.enable = true;
+  services.udev.packages = [ pkgs.usb-blaster-udev-rules ];
 
   # hostname
   networking.hostName = "nixos";
