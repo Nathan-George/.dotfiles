@@ -92,7 +92,7 @@
   users.users."nathan" = {
     isNormalUser = true;
     description = "Nathan George";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "wireshark"];
   };
 
   # allow unfree packages
@@ -130,6 +130,8 @@
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
+
+  programs.wireshark.enable = true;
 
   # environment variables
   environment.sessionVariables = {
