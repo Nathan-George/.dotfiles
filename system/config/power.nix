@@ -11,6 +11,13 @@
       size = 16 * 1024;
     }
   ];
-  services.logind.lidSwitch = "hibernate";
-  services.logind.powerKey = "ignore";
+
+  systemd.sleep.extraConfig = ''
+    MemorySleepMode=[s2idle] deep
+  '';
+
+  services.logind.settings.Login = { 
+    HandleLidSwitch = "suspend-then-hybernate"; 
+    HandlePowerKey = "suspend-then-hybernate";
+  };
 }

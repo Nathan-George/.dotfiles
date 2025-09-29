@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    globalprotect-openconnect
+    # globalprotect-openconnect
     quartus-prime-lite
+    wireshark
   ];
 
   home.sessionVariables = {

@@ -64,7 +64,7 @@
       nathan = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          plasma-manager.homeManagerModules.plasma-manager
+          plasma-manager.homeModules.plasma-manager
           ./home/home.nix
           ./home/profiles/nathan.nix
         ];

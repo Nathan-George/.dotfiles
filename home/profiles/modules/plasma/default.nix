@@ -3,7 +3,7 @@
   imports = [
     ./display.nix
     ./input.nix
-    ./klipper.nix
+    # ./klipper.nix
     ./krunner.nix
     ./kscreenlocker.nix
     ./kwallet.nix
