@@ -29,6 +29,7 @@
   # enable bluetooth
   hardware.bluetooth = {
     enable = true; # enables support for Bluetooth
+    package = pkgs.bluez-experimental;
     powerOnBoot = true; # powers up the default Bluetooth controller on boot
     settings = {
       General = {
@@ -133,6 +134,10 @@
 
   programs.wireshark.enable = true;
 
+  programs.ssh = {
+    startAgent = true;
+  };
+
   # environment variables
   environment.sessionVariables = {
     # make default editor vim
@@ -143,6 +148,8 @@
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
+
+    SSH_AGENT_SOCK = "$SSH_AUTH_SOCK";
   };
 
   system.stateVersion = "23.11"; # do not change

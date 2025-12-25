@@ -33,7 +33,8 @@
     # };
 
     workspace = {
-      wallpaper = ./assets/wallpaper.png;
+      # wallpaper = ./assets/wallpaper.png;
+      wallpaper = ./assets/glacer_wallpaper.png;
 
       cursor.theme = "Hackneyed";
     };
