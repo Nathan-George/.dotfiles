@@ -2,9 +2,9 @@
 {...}: {
   programs.git = {
     enable = true;
-    userName = "Nathan George";
-    userEmail = "nbg0520@gmail.com";
-    extraConfig = {
+    settings = {
+      user.name = "Nathan George";
+      user.email = "nbg0520@gmail.com";
       format.pretty = "oneline";
       log.abbrevCommit = true;
       pull.rebase = true;
