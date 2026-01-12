@@ -18,6 +18,8 @@
     ];
 
     extraPackages = with pkgs; [
+      tree-sitter
+
       # lsp
       lua-language-server
       nixd
