@@ -6,6 +6,10 @@
 
   # enable bash
   programs.bash.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   # allow certain insecure packages
   nixpkgs.config.permittedInsecurePackages = [

@@ -28,6 +28,9 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    # MPLab XC8
+    microchip.url = "github:Nathan-George/nix-microchip";
+
     # nix colors
     nix-colors.url = "github:misterio77/nix-colors";
   };
@@ -37,10 +40,11 @@
     home-manager,
     nixos-hardware,
     plasma-manager,
+    microchip,
     nix-colors,
     ...
   }: let
-    overlays = (import ./overlays);
+    overlays = (import ./overlays) ++ [ microchip.overlays.default ];
 
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system overlays; };

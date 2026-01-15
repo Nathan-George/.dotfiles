@@ -15,6 +15,8 @@
     plugins = with pkgs.vimPlugins; [
       lazy-nvim
       nvim-treesitter.withAllGrammars
+      telescope-nvim
+      nvim-lspconfig
     ];
 
     extraPackages = with pkgs; [
@@ -33,6 +35,7 @@
       svelte-language-server
 
       # tools some plugins need
+      inotify-tools
       luajitPackages.luarocks
       imagemagick
       texliveSmall
@@ -67,6 +70,8 @@
       -- list of all plugins
       vim.g.plugin_paths = {
         ["${nvim-treesitter.pname}"] = "${nvim-treesitter}",
+        ["${telescope-nvim.pname}"] = "${telescope-nvim}",
+        ["${nvim-lspconfig.pname}"] = "${nvim-lspconfig}",
       }
 
       -- needed to add back the grammars to the run time path (rtp)

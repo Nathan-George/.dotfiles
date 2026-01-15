@@ -1,11 +1,12 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # globalprotect-openconnect
-    quartus-prime-lite
-    wireshark
+    #globalprotect-openconnect
+    #quartus-prime-lite
+    mplab-x
+    putty
   ];
 
-  home.sessionVariables = {
-    LM_LICENSE_FILE = "/home/nathan/.dotfiles/home/profiles/LR-247745_License.dat";
-  };
+  #home.sessionVariables = {
+  #  LM_LICENSE_FILE = "/home/nathan/.dotfiles/home/profiles/LR-247745_License.dat";
+  #};
 }
