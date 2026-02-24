@@ -29,7 +29,7 @@
     };
 
     # MPLab XC8
-    microchip.url = "github:Nathan-George/nix-microchip";
+    microchip.url = "github:Nathan-George/nix-microchip/139581a77f33712ec2bdd4acb540ecb908662c54";
 
     # nix colors
     nix-colors.url = "github:misterio77/nix-colors";

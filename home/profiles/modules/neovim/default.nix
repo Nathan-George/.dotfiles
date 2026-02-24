@@ -33,6 +33,7 @@
       harper
       vue-language-server
       svelte-language-server
+      tinymist
 
       # tools some plugins need
       inotify-tools

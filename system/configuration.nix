@@ -89,11 +89,13 @@
   # hostname
   networking.hostName = "nixos";
 
+  virtualisation.spiceUSBRedirection.enable = true;
+
   # user account
   users.users."nathan" = {
     isNormalUser = true;
     description = "Nathan George";
-    extraGroups = ["networkmanager" "wheel" "wireshark"];
+    extraGroups = ["networkmanager" "wheel" "wireshark"] ++ [ "dialout" "plugdev" "usb" ] ++ [ "libvirtd" "kvm"];
   };
 
   # allow unfree packages
@@ -137,6 +139,16 @@
   programs.ssh = {
     startAgent = true;
   };
+
+  # Add udev rules for Microchip Debuggers/Programmers
+  services.udev.extraRules = ''
+    # MPLAB Snap (Normal and Bootloader modes)
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="04d8", ATTRS{idProduct}=="9018", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="04d8", ATTRS{idProduct}=="00dd", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1"
+  
+    # Broad catch-all for other Microchip tools (PICkit, ICD)
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="04d8", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1"
+  '';
 
   # environment variables
   environment.sessionVariables = {

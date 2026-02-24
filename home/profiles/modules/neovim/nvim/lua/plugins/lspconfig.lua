@@ -29,6 +29,7 @@ return {
       ocamllsp = {},
       svelte = {},
       clangd = {},
+      tinymist = {},
 
       harper_ls = {
         settings = {
