@@ -12,9 +12,9 @@
     }
   ];
 
-  systemd.sleep.extraConfig = ''
-    MemorySleepMode=[s2idle] deep
-  '';
+  systemd.sleep.settings.Sleep = {
+    MemorySleepMode="[s2idle] deep";
+  };
 
   services.logind.settings.Login = { 
     HandleLidSwitch = "suspend-then-hybernate"; 

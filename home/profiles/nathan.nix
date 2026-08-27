@@ -5,7 +5,24 @@
   ];
 
   # enable bash
-  programs.bash.enable = true;
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      jmp() {
+        cd "$HOME/jmp/$1"
+      }
+
+      _jmp_completions() {
+        local cur="''${COMP_WORDS[COMP_CWORD]}"
+        local dirs=$(command ls -1 "$HOME/jmp" 2>/dev/null)
+        COMPREPLY=( $(compgen -W "$dirs" -- "$cur") )
+      }
+
+      complete -F _jmp_completions jmp
+    '';
+  };
+  
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
@@ -23,7 +40,6 @@
     ghostty
 
     # apps
-    firefox
     discord
     obsidian
     vscode
@@ -42,6 +58,10 @@
     # games
     prismlauncher
   ];
+
+  home.shellAliases = {
+    devshell = "nix flake new -t \"github:numtide/devshell\" .";
+  };
 
   fonts.fontconfig.enable = true;
 }

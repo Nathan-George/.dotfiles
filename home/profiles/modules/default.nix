@@ -2,7 +2,7 @@
   imports = [
     ./colors.nix
     ./fonts.nix
-    ./neovim
+    #./neovim
     ./zen-browser.nix
     ./git.nix
     ./plasma

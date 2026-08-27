@@ -70,8 +70,20 @@
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
   # enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.cups-pdf.enable = true;
+  services.printing = {
+    enable = true;
+    cups-pdf.enable = true;
+
+    drivers = [ pkgs.hplip ];
+  };
+
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    nssmdns6 = true;
+    openFirewall = true;
+  };
 
   # enable sound with pipewire
   security.rtkit.enable = true;
@@ -109,7 +121,7 @@
     file
     firefox
     killall
-    neofetch
+    fastfetch
     traceroute
     unzip
     vim

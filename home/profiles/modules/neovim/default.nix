@@ -29,6 +29,7 @@
       pyright
       gopls
       ocamlPackages.ocaml-lsp
+      ocamlformat
       clang-tools
       harper
       vue-language-server
@@ -55,7 +56,7 @@
 
   xdg.configFile."nvim".source =
     config.lib.file.mkOutOfStoreSymlink
-    "/home/nathan/.dotfiles/home/profiles/modules/neovim/nvim";
+    "{config.home.homeDirectory}.dotfiles/home/profiles/modules/neovim/nvim";
 
   # We cannot generate any files in `.config/nvim` because that is a symlink so we use `.config/nvim.nix` instead
   xdg.configFile."nvim.nix/init.lua".text = let

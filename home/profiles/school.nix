@@ -2,8 +2,8 @@
   home.packages = with pkgs; [
     #globalprotect-openconnect
     #quartus-prime-lite
-    mplab-x
-    putty
+    #mplab-x
+    #putty
   ];
 
   #home.sessionVariables = {
