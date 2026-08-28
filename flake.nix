@@ -5,20 +5,13 @@
     # nix packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # hardware specific configuration
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     # home manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # hardware specific configuration
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    # plasma manager
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
 
     # zen browser
@@ -27,24 +20,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-
-    # MPLab XC8
-    microchip.url = "github:Nathan-George/nix-microchip/139581a77f33712ec2bdd4acb540ecb908662c54";
-
-    # nix colors
-    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = inputs @ {
     nixpkgs,
-    home-manager,
     nixos-hardware,
-    plasma-manager,
-    microchip,
-    nix-colors,
+    home-manager,
     ...
   }: let
-    overlays = (import ./overlays) ++ [ microchip.overlays.default ];
+    overlays = (import ./overlays);
 
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system overlays; };
@@ -68,12 +52,9 @@
       nathan = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          plasma-manager.homeModules.plasma-manager
           ./home/home.nix
-          ./home/profiles/nathan.nix
         ];
-        extraSpecialArgs = {
-          inherit nix-colors;
+	extraSpecialArgs = {
           inherit inputs;
         };
       };

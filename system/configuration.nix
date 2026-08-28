@@ -1,82 +1,76 @@
-# main configuration
 {pkgs, ...}: {
   imports = [
-    ./config/docker.nix
-    ./config/garbage.nix
-    ./config/locale.nix
-    ./config/power.nix
     ./hardware-configuration.nix
   ];
 
-  # enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  # ============================================================================
+  # SYSTEM FOUNDATION & BOOT
+  # ============================================================================
+  networking.hostName = "nixos";
+  time.timeZone = "America/Denver";
+  i18n.defaultLocale = "en_US.UTF-8";
+  system.stateVersion = "23.11"; # do not change
 
-  # bootloader
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nixpkgs.config.allowUnfree = true;
+
+  # Automatic Garbage Collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+  # Bootloader & Hibernation Setup
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = ["resume_offset=143177728"];
+  boot.resumeDevice = "/dev/disk/by-uuid/63e2fe76-b072-4fc0-b1ac-55be22d8c3e4";
 
-  # framework hardware stuff
-  services.fwupd.enable = true;
-
-  # enable fingerprint
+  # ============================================================================
+  # HARDWARE & POWER MANAGEMENT
+  # ============================================================================
+  services.fwupd.enable = true; # firmware updates
   services.fprintd.enable = true;
+  powerManagement.enable = true;
 
-  # enable networking
-  networking.networkmanager.enable = true;
-  # disable network wait service (this caused boot to be slow)
-  systemd.services.NetworkManager-wait-online.enable = false;
-
-  # enable bluetooth
+  hardware.xpadneo.enable = true;
   hardware.bluetooth = {
-    enable = true; # enables support for Bluetooth
+    enable = true;
     package = pkgs.bluez-experimental;
-    powerOnBoot = true; # powers up the default Bluetooth controller on boot
-    settings = {
-      General = {
-        Privacy = "device";
-        JustWorksRepairing = "always";
-        Class = "0x000100";
-        FastConnectable = "true";
-      };
+    powerOnBoot = true;
+    settings.General = {
+      Privacy = "device";
+      JustWorksRepairing = "always";
+      Class = "0x000100";
+      FastConnectable = "true";
     };
   };
-  hardware.xpadneo.enable = true;
 
-  # programs.hyprland.enable = true;
+  # Sleep & Lid Behavior
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
 
-  # window manager
-  services.desktopManager.plasma6.enable = true;
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [oxygen];
-
-  # display manager
-  services.displayManager = {
-    sddm.enable = true;
-    defaultSession = "plasma";
+  systemd.sleep.settings.Sleep = {
+    MemorySleepMode = "[s2idle] deep";
   };
 
-  # make apps not blurry
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  # enable X11 windowing system
-  services.xserver.enable = true;
-  # X11 keymap
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend-then-hybernate";
+    HandlePowerKey = "suspend-then-hybernate";
   };
 
-  # desktop portals
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  services.usbmuxd.enable = true; # connecting to iOS devices
 
-  # enable CUPS to print documents.
-  services.printing = {
-    enable = true;
-    cups-pdf.enable = true;
-
-    drivers = [ pkgs.hplip ];
-  };
-
+  # ============================================================================
+  # NETWORKING & SOUND
+  # ============================================================================
+  networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   services.avahi = {
     enable = true;
@@ -85,7 +79,7 @@
     openFirewall = true;
   };
 
-  # enable sound with pipewire
+  # rtkit (optional, recommended) allows Pipewire to use the realtime scheduler for increased performance.
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -95,86 +89,77 @@
     jack.enable = true;
   };
 
-  services.usbmuxd.enable = true;
-  services.udev.packages = [ pkgs.usb-blaster-udev-rules ];
+  # ============================================================================
+  # DESKTOP ENVIRONMENT (GNOME & WAYLAND)
+  # ============================================================================
+  #services.xserver = {
+  #  enable = true;
+  #  xkb.layout = "us";
+  #  xkb.variant = "";
+  #};
 
-  # hostname
-  networking.hostName = "nixos";
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
-  virtualisation.spiceUSBRedirection.enable = true;
+  # To disable installing GNOME's suite of applications
+  # and only be left with GNOME shell.
+  services.gnome.core-apps.enable = false;
+  services.gnome.core-developer-tools.enable = false;
+  services.gnome.games.enable = false;
+  environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
 
-  # user account
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gnome];
+  };
+
+  # ============================================================================
+  # VIRTUALIZATION & SERVICES
+  # ============================================================================
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
+
+  services.printing = {
+    enable = true;
+    cups-pdf.enable = true;
+    drivers = [pkgs.hplip];
+  };
+
+  # ============================================================================
+  # USER ACCOUNTS & ENVIRONMENT
+  # ============================================================================
   users.users."nathan" = {
     isNormalUser = true;
     description = "Nathan George";
-    extraGroups = ["networkmanager" "wheel" "wireshark"] ++ [ "dialout" "plugdev" "usb" ] ++ [ "libvirtd" "kvm"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "plugdev"
+      "docker"
+    ];
   };
 
-  # allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  environment.sessionVariables = {
+    EDITOR = "vim";
+    NIXOS_OZONE_WL = "1"; # Force Wayland for Electron apps
+  };
 
-  # system packages
+  # System level packages
   environment.systemPackages = with pkgs; [
-    # utils
-    kitty
-    brightnessctl
-    file
-    firefox
-    killall
-    fastfetch
-    traceroute
-    unzip
+    ghostty
     vim
-    wget
-    zip
-
-    # home manager
-    home-manager
-
-    # nix lsp
-    nixd
+    curl
   ];
 
-  # enable git
+  # System Programs
   programs.git.enable = true;
 
-  # emable steam
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
-
-  programs.wireshark.enable = true;
-
-  programs.ssh = {
-    startAgent = true;
-  };
-
-  # Add udev rules for Microchip Debuggers/Programmers
-  services.udev.extraRules = ''
-    # MPLAB Snap (Normal and Bootloader modes)
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="04d8", ATTRS{idProduct}=="9018", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1"
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="04d8", ATTRS{idProduct}=="00dd", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1"
-  
-    # Broad catch-all for other Microchip tools (PICkit, ICD)
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="04d8", TAG+="uaccess", ENV{ID_MM_DEVICE_IGNORE}="1"
-  '';
-
-  # environment variables
-  environment.sessionVariables = {
-    # make default editor vim
-    EDITOR = "vim";
-
-    # xdg stuff
-    XDG_CACHE_HOME = "$HOME/.cache";
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME = "$HOME/.local/share";
-    XDG_STATE_HOME = "$HOME/.local/state";
-
-    SSH_AGENT_SOCK = "$SSH_AUTH_SOCK";
-  };
-
-  system.stateVersion = "23.11"; # do not change
 }
