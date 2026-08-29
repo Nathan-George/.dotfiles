@@ -24,6 +24,8 @@
     discord
     vscode
     prismlauncher
+    zip
+    unzip
     gcc
     python313
     wl-clipboard
