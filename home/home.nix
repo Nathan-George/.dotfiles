@@ -20,10 +20,11 @@
     papers
     gimp
     vlc
-    ifuse # allow mounting iOS devices
     discord
     vscode
     prismlauncher
+    anki
+    ifuse # allow mounting iOS devices
     zip
     unzip
     gcc
