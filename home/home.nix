@@ -39,6 +39,11 @@
   };
 
   dconf.settings = {
+    # Enable compose key
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = [ "compose:ralt" ];
+    };
+
     # Disable idle screen dimming and auto-sleep
     "org/gnome/settings-daemon/plugins/power" = {
       idle-dim = false;
