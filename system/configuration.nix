@@ -77,6 +77,11 @@
     nssmdns4 = true;
     nssmdns6 = true;
     openFirewall = true;
+    extraConfig = ''
+      [server]
+      ratelimit-interval-usec=500000
+      ratelimit-burst=500
+    '';
   };
 
   # rtkit (optional, recommended) allows Pipewire to use the realtime scheduler for increased performance.
@@ -138,6 +143,7 @@
       "wheel"
       "plugdev"
       "docker"
+      "dialout"
     ];
   };
 

@@ -13,6 +13,7 @@
       nvim-lspconfig
       blink-cmp
       telescope-nvim
+      guess-indent-nvim
     ];
 
     extraPackages = with pkgs; [
@@ -57,6 +58,7 @@
       require("plugins.lsp")
       require("plugins.cmp")
       require("plugins.telescope")
+      require("plugins.guess-indent")
     '';
 
     withRuby = false;
