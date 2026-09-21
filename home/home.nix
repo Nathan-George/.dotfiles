@@ -24,6 +24,7 @@
     vscode
     prismlauncher
     anki
+    arduino
     ifuse # allow mounting iOS devices
     zip
     unzip

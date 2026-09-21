@@ -139,10 +139,10 @@
     isNormalUser = true;
     description = "Nathan George";
     extraGroups = [
-      "networkmanager"
       "wheel"
-      "plugdev"
+      "networkmanager"
       "docker"
+      "plugdev"
       "dialout"
     ];
   };
